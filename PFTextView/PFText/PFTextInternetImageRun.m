@@ -91,7 +91,6 @@
 
 - (CGFloat)runGetAscentCallback
 {
-    NSLog(@"runGetAscentCallback");
     CGFloat ascent = 0;
     UIImage *image = _internetImage?:_placeholderImage;
     if (image) {

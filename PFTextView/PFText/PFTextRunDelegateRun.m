@@ -62,7 +62,6 @@ const CGSize PFTextViewRunDelegateMaximumSize = (CGSize){0x100000,0x100000};
     [super configRun:attributedString];
     
     [attributedString addAttribute:(id)kCTRunDelegateAttributeName value:(__bridge id)self.runDelegate range:self.range];
-    [attributedString addAttribute:(id)kCTForegroundColorAttributeName value:(id)[UIColor clearColor].CGColor range:self.range];
 }
 
 #pragma mark - run call back
@@ -112,7 +111,9 @@ CGFloat runDelegateGetDescentCallback(void *refCon)
 CGFloat runDelegateGetWidthCallback(void *refCon)
 {
     PFTextRunDelegateRun *run = (__bridge PFTextRunDelegateRun *)refCon;
-    return [run runGetWidthCallback]/run.range.length;
+//    return [run runGetWidthCallback]/run.range.length;
+    return [run runGetWidthCallback];
+
 }
 
 

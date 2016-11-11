@@ -8,6 +8,9 @@
 
 #import "PFTextView.h"
 
+static unichar const replacementChar = 0xFFFC;
+
+
 @interface PFTextView ()
 
 @property (nonatomic, strong) NSMutableArray *runs; //需要特殊处理的run的数组
@@ -65,19 +68,39 @@
 {
     [self.runRectDictionary removeAllObjects];
     
+    
+    
     //解析文本 找出需要特殊处理的run
     if (self.runs.count == 0) {
         [self parseText:self.text runs:self.runs];
+        //根据run的location从高到底排序 方便之后的空白符替换
+        [self.runs sortUsingComparator:^NSComparisonResult(PFTextRun *obj1, PFTextRun *obj2) {
+            if (obj1.range.location > obj2.range.location) {
+                return NSOrderedAscending;
+            }else{
+                return NSOrderedDescending;
+            }
+        }];
     }
+    
     
     //配置 文本
     [self createAttributedString];
     
     //把特殊run的属性 写到 attString 里面
     __weak typeof(self) wself = self;
-    for (PFTextRun *run in self.runs) {
+    for (int i = 0 ; i < self.runs.count ;i++) {
+        
+        PFTextRun *run = self.runs[i];
         
         [run configRun:_attributeString];
+        
+        if (run.isDrawSelf) {
+            //对需要自己绘制的进行空白符替换占位
+            NSString *replacementString = [NSString stringWithCharacters:&replacementChar length:1];
+            [_attributeString replaceCharactersInRange:run.range withString:replacementString];
+        }
+        
         
         run.needDisplay = ^{
             
@@ -164,10 +187,6 @@
     CGContextSetTextPosition(context, lastLineOrigin.x, lastLineOrigin.y);
     
     CTLineRef lastLine = CFArrayGetValueAtIndex(lines, lastIndex);
-    
-    NSLog(@"%ld",CTLineGetStringRange(lastLine).location+CTLineGetStringRange(lastLine).length);
-    NSLog(@"%ld",_attributeString.string.length);
-    
     
     if ((self.lineBreakMode != NSLineBreakByTruncatingHead && self.lineBreakMode != NSLineBreakByTruncatingTail && self.lineBreakMode != NSLineBreakByTruncatingMiddle) ||
         (CTLineGetStringRange(lastLine).location+CTLineGetStringRange(lastLine).length == _attributeString.string.length))
@@ -380,12 +399,25 @@
     
     if (self.runs.count == 0) {
         [self parseText:self.text runs:self.runs];
+        [self.runs sortUsingComparator:^NSComparisonResult(PFTextRun *obj1, PFTextRun *obj2) {
+            if (obj1.range.location > obj2.range.location) {
+                return NSOrderedAscending;
+            }else{
+                return NSOrderedDescending;
+            }
+        }];
     }
     
     [self createAttributedString];
     
-    for (PFTextRun *run in self.runs) {
+    for (int i = 0; i < self.runs.count; i++) {
+        PFTextRun *run = self.runs[i];
         [run configRun:_attributeString];
+        if (run.isDrawSelf) {
+            //对需要自己绘制的进行空白符替换占位
+            NSString *replacementString = [NSString stringWithCharacters:&replacementChar length:1];
+            [_attributeString replaceCharactersInRange:run.range withString:replacementString];
+        }
     }
     
     CGMutablePathRef pathRef = CGPathCreateMutable();
@@ -517,6 +549,7 @@
     if (_text != text) {
         [self setNeedsDisplay];
         _text = text;
+        _attributeString = nil;
         [self.runs removeAllObjects];
     }
 }
