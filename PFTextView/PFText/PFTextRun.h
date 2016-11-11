@@ -10,12 +10,29 @@
 #import <CoreText/CoreText.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger,PFTextRunWeight) {
+    
+    PFTextRunDefaultWeight = 500,
+    
+    PFTextRunLowWeight = 250,
+    
+    PFTextRunHeightWeight = 750,
+    
+    PFTextRunRequirWeight = 1000
+    
+};
+
 /**
  *  @brief 子类需要重写configRun: (需要调用 super),  parseText: textRunsArray: (不需要调用super)
  
  */
 
 @interface PFTextRun : NSObject
+
+/**
+ run的权重,防止一个字符被多个类型的PFTextRun正则出来. 默认值为 PFTextRunDefaultWeight
+ */
+@property (nonatomic, assign) PFTextRunWeight weight;
 
 /**
  正则或其他方式筛选出来的文本

@@ -17,6 +17,7 @@ NSString * const kPFTextAttributeName = @"kPFTextAttributeName";
 {
     if (self = [super init]) {
         
+        self.weight = PFTextRunDefaultWeight;
         self.isResponseTouch = NO;
     }
     return self;
