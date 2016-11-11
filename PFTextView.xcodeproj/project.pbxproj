@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D33D75241DD55E0100909226 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = D33D75231DD55E0100909226 /* default.png */; };
+		D33D75361DD5627200909226 /* PFTextAtRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75271DD5627200909226 /* PFTextAtRun.m */; };
+		D33D75371DD5627200909226 /* PFTextDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75291DD5627200909226 /* PFTextDownloader.m */; };
+		D33D75381DD5627200909226 /* PFTextInternetImageRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D752B1DD5627200909226 /* PFTextInternetImageRun.m */; };
+		D33D75391DD5627200909226 /* PFTextLinkRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D752D1DD5627200909226 /* PFTextLinkRun.m */; };
+		D33D753A1DD5627200909226 /* PFTextLocalImageRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D752F1DD5627200909226 /* PFTextLocalImageRun.m */; };
+		D33D753B1DD5627200909226 /* PFTextRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75311DD5627200909226 /* PFTextRun.m */; };
+		D33D753C1DD5627200909226 /* PFTextRunDelegateRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75331DD5627200909226 /* PFTextRunDelegateRun.m */; };
+		D33D753D1DD5627200909226 /* PFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75351DD5627200909226 /* PFTextView.m */; };
+		D3B335A71DD4C3B40063C5A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335A61DD4C3B40063C5A1 /* main.m */; };
+		D3B335AA1DD4C3B40063C5A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */; };
+		D3B335AD1DD4C3B40063C5A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335AC1DD4C3B40063C5A1 /* ViewController.m */; };
+		D3B335B01DD4C3B40063C5A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B335AE1DD4C3B40063C5A1 /* Main.storyboard */; };
+		D3B335B21DD4C3B40063C5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B335B11DD4C3B40063C5A1 /* Assets.xcassets */; };
+		D3B335B51DD4C3B40063C5A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B335B31DD4C3B40063C5A1 /* LaunchScreen.storyboard */; };
+		D3B335C01DD4C3B40063C5A1 /* PFTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335BF1DD4C3B40063C5A1 /* PFTextViewTests.m */; };
+		D3B335CB1DD4C3B40063C5A1 /* PFTextViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335CA1DD4C3B40063C5A1 /* PFTextViewUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3B335BC1DD4C3B40063C5A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B3359A1DD4C3B40063C5A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3B335A11DD4C3B40063C5A1;
+			remoteInfo = PFTextView;
+		};
+		D3B335C71DD4C3B40063C5A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3B3359A1DD4C3B40063C5A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3B335A11DD4C3B40063C5A1;
+			remoteInfo = PFTextView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D33D75231DD55E0100909226 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		D33D75261DD5627200909226 /* PFTextAtRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextAtRun.h; sourceTree = "<group>"; };
+		D33D75271DD5627200909226 /* PFTextAtRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextAtRun.m; sourceTree = "<group>"; };
+		D33D75281DD5627200909226 /* PFTextDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextDownloader.h; sourceTree = "<group>"; };
+		D33D75291DD5627200909226 /* PFTextDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextDownloader.m; sourceTree = "<group>"; };
+		D33D752A1DD5627200909226 /* PFTextInternetImageRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextInternetImageRun.h; sourceTree = "<group>"; };
+		D33D752B1DD5627200909226 /* PFTextInternetImageRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextInternetImageRun.m; sourceTree = "<group>"; };
+		D33D752C1DD5627200909226 /* PFTextLinkRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextLinkRun.h; sourceTree = "<group>"; };
+		D33D752D1DD5627200909226 /* PFTextLinkRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextLinkRun.m; sourceTree = "<group>"; };
+		D33D752E1DD5627200909226 /* PFTextLocalImageRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextLocalImageRun.h; sourceTree = "<group>"; };
+		D33D752F1DD5627200909226 /* PFTextLocalImageRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextLocalImageRun.m; sourceTree = "<group>"; };
+		D33D75301DD5627200909226 /* PFTextRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextRun.h; sourceTree = "<group>"; };
+		D33D75311DD5627200909226 /* PFTextRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextRun.m; sourceTree = "<group>"; };
+		D33D75321DD5627200909226 /* PFTextRunDelegateRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextRunDelegateRun.h; sourceTree = "<group>"; };
+		D33D75331DD5627200909226 /* PFTextRunDelegateRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextRunDelegateRun.m; sourceTree = "<group>"; };
+		D33D75341DD5627200909226 /* PFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextView.h; sourceTree = "<group>"; };
+		D33D75351DD5627200909226 /* PFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextView.m; sourceTree = "<group>"; };
+		D3B335A21DD4C3B40063C5A1 /* PFTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3B335A61DD4C3B40063C5A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D3B335A81DD4C3B40063C5A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D3B335AB1DD4C3B40063C5A1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D3B335AC1DD4C3B40063C5A1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D3B335AF1DD4C3B40063C5A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D3B335B11DD4C3B40063C5A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3B335B41DD4C3B40063C5A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D3B335B61DD4C3B40063C5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3B335BB1DD4C3B40063C5A1 /* PFTextViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PFTextViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3B335BF1DD4C3B40063C5A1 /* PFTextViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFTextViewTests.m; sourceTree = "<group>"; };
+		D3B335C11DD4C3B40063C5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3B335C61DD4C3B40063C5A1 /* PFTextViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PFTextViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3B335CA1DD4C3B40063C5A1 /* PFTextViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFTextViewUITests.m; sourceTree = "<group>"; };
+		D3B335CC1DD4C3B40063C5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3B3359F1DD4C3B40063C5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3B335B81DD4C3B40063C5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3B335C31DD4C3B40063C5A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D33D75251DD5627200909226 /* PFText */ = {
+			isa = PBXGroup;
+			children = (
+				D33D75261DD5627200909226 /* PFTextAtRun.h */,
+				D33D75271DD5627200909226 /* PFTextAtRun.m */,
+				D33D75281DD5627200909226 /* PFTextDownloader.h */,
+				D33D75291DD5627200909226 /* PFTextDownloader.m */,
+				D33D752A1DD5627200909226 /* PFTextInternetImageRun.h */,
+				D33D752B1DD5627200909226 /* PFTextInternetImageRun.m */,
+				D33D752C1DD5627200909226 /* PFTextLinkRun.h */,
+				D33D752D1DD5627200909226 /* PFTextLinkRun.m */,
+				D33D752E1DD5627200909226 /* PFTextLocalImageRun.h */,
+				D33D752F1DD5627200909226 /* PFTextLocalImageRun.m */,
+				D33D75301DD5627200909226 /* PFTextRun.h */,
+				D33D75311DD5627200909226 /* PFTextRun.m */,
+				D33D75321DD5627200909226 /* PFTextRunDelegateRun.h */,
+				D33D75331DD5627200909226 /* PFTextRunDelegateRun.m */,
+				D33D75341DD5627200909226 /* PFTextView.h */,
+				D33D75351DD5627200909226 /* PFTextView.m */,
+			);
+			path = PFText;
+			sourceTree = "<group>";
+		};
+		D3B335991DD4C3B40063C5A1 = {
+			isa = PBXGroup;
+			children = (
+				D3B335A41DD4C3B40063C5A1 /* PFTextView */,
+				D3B335BE1DD4C3B40063C5A1 /* PFTextViewTests */,
+				D3B335C91DD4C3B40063C5A1 /* PFTextViewUITests */,
+				D3B335A31DD4C3B40063C5A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3B335A31DD4C3B40063C5A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3B335A21DD4C3B40063C5A1 /* PFTextView.app */,
+				D3B335BB1DD4C3B40063C5A1 /* PFTextViewTests.xctest */,
+				D3B335C61DD4C3B40063C5A1 /* PFTextViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3B335A41DD4C3B40063C5A1 /* PFTextView */ = {
+			isa = PBXGroup;
+			children = (
+				D33D75251DD5627200909226 /* PFText */,
+				D3B335A81DD4C3B40063C5A1 /* AppDelegate.h */,
+				D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */,
+				D3B335AB1DD4C3B40063C5A1 /* ViewController.h */,
+				D3B335AC1DD4C3B40063C5A1 /* ViewController.m */,
+				D33D75231DD55E0100909226 /* default.png */,
+				D3B335AE1DD4C3B40063C5A1 /* Main.storyboard */,
+				D3B335B11DD4C3B40063C5A1 /* Assets.xcassets */,
+				D3B335B31DD4C3B40063C5A1 /* LaunchScreen.storyboard */,
+				D3B335B61DD4C3B40063C5A1 /* Info.plist */,
+				D3B335A51DD4C3B40063C5A1 /* Supporting Files */,
+			);
+			path = PFTextView;
+			sourceTree = "<group>";
+		};
+		D3B335A51DD4C3B40063C5A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3B335A61DD4C3B40063C5A1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3B335BE1DD4C3B40063C5A1 /* PFTextViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3B335BF1DD4C3B40063C5A1 /* PFTextViewTests.m */,
+				D3B335C11DD4C3B40063C5A1 /* Info.plist */,
+			);
+			path = PFTextViewTests;
+			sourceTree = "<group>";
+		};
+		D3B335C91DD4C3B40063C5A1 /* PFTextViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D3B335CA1DD4C3B40063C5A1 /* PFTextViewUITests.m */,
+				D3B335CC1DD4C3B40063C5A1 /* Info.plist */,
+			);
+			path = PFTextViewUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3B335A11DD4C3B40063C5A1 /* PFTextView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3B335CF1DD4C3B40063C5A1 /* Build configuration list for PBXNativeTarget "PFTextView" */;
+			buildPhases = (
+				D3B3359E1DD4C3B40063C5A1 /* Sources */,
+				D3B3359F1DD4C3B40063C5A1 /* Frameworks */,
+				D3B335A01DD4C3B40063C5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PFTextView;
+			productName = PFTextView;
+			productReference = D3B335A21DD4C3B40063C5A1 /* PFTextView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3B335BA1DD4C3B40063C5A1 /* PFTextViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3B335D21DD4C3B40063C5A1 /* Build configuration list for PBXNativeTarget "PFTextViewTests" */;
+			buildPhases = (
+				D3B335B71DD4C3B40063C5A1 /* Sources */,
+				D3B335B81DD4C3B40063C5A1 /* Frameworks */,
+				D3B335B91DD4C3B40063C5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3B335BD1DD4C3B40063C5A1 /* PBXTargetDependency */,
+			);
+			name = PFTextViewTests;
+			productName = PFTextViewTests;
+			productReference = D3B335BB1DD4C3B40063C5A1 /* PFTextViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D3B335C51DD4C3B40063C5A1 /* PFTextViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3B335D51DD4C3B40063C5A1 /* Build configuration list for PBXNativeTarget "PFTextViewUITests" */;
+			buildPhases = (
+				D3B335C21DD4C3B40063C5A1 /* Sources */,
+				D3B335C31DD4C3B40063C5A1 /* Frameworks */,
+				D3B335C41DD4C3B40063C5A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3B335C81DD4C3B40063C5A1 /* PBXTargetDependency */,
+			);
+			name = PFTextViewUITests;
+			productName = PFTextViewUITests;
+			productReference = D3B335C61DD4C3B40063C5A1 /* PFTextViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3B3359A1DD4C3B40063C5A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "https://github.com/LongPF/PFText";
+				TargetAttributes = {
+					D3B335A11DD4C3B40063C5A1 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 92TS993A24;
+						ProvisioningStyle = Automatic;
+					};
+					D3B335BA1DD4C3B40063C5A1 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D3B335A11DD4C3B40063C5A1;
+					};
+					D3B335C51DD4C3B40063C5A1 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D3B335A11DD4C3B40063C5A1;
+					};
+				};
+			};
+			buildConfigurationList = D3B3359D1DD4C3B40063C5A1 /* Build configuration list for PBXProject "PFTextView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D3B335991DD4C3B40063C5A1;
+			productRefGroup = D3B335A31DD4C3B40063C5A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3B335A11DD4C3B40063C5A1 /* PFTextView */,
+				D3B335BA1DD4C3B40063C5A1 /* PFTextViewTests */,
+				D3B335C51DD4C3B40063C5A1 /* PFTextViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3B335A01DD4C3B40063C5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3B335B51DD4C3B40063C5A1 /* LaunchScreen.storyboard in Resources */,
+				D3B335B21DD4C3B40063C5A1 /* Assets.xcassets in Resources */,
+				D3B335B01DD4C3B40063C5A1 /* Main.storyboard in Resources */,
+				D33D75241DD55E0100909226 /* default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3B335B91DD4C3B40063C5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3B335C41DD4C3B40063C5A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3B3359E1DD4C3B40063C5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3B335AD1DD4C3B40063C5A1 /* ViewController.m in Sources */,
+				D33D753D1DD5627200909226 /* PFTextView.m in Sources */,
+				D33D75371DD5627200909226 /* PFTextDownloader.m in Sources */,
+				D33D753B1DD5627200909226 /* PFTextRun.m in Sources */,
+				D33D75361DD5627200909226 /* PFTextAtRun.m in Sources */,
+				D3B335AA1DD4C3B40063C5A1 /* AppDelegate.m in Sources */,
+				D3B335A71DD4C3B40063C5A1 /* main.m in Sources */,
+				D33D75381DD5627200909226 /* PFTextInternetImageRun.m in Sources */,
+				D33D753A1DD5627200909226 /* PFTextLocalImageRun.m in Sources */,
+				D33D75391DD5627200909226 /* PFTextLinkRun.m in Sources */,
+				D33D753C1DD5627200909226 /* PFTextRunDelegateRun.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3B335B71DD4C3B40063C5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3B335C01DD4C3B40063C5A1 /* PFTextViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3B335C21DD4C3B40063C5A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3B335CB1DD4C3B40063C5A1 /* PFTextViewUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3B335BD1DD4C3B40063C5A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3B335A11DD4C3B40063C5A1 /* PFTextView */;
+			targetProxy = D3B335BC1DD4C3B40063C5A1 /* PBXContainerItemProxy */;
+		};
+		D3B335C81DD4C3B40063C5A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3B335A11DD4C3B40063C5A1 /* PFTextView */;
+			targetProxy = D3B335C71DD4C3B40063C5A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D3B335AE1DD4C3B40063C5A1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3B335AF1DD4C3B40063C5A1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D3B335B31DD4C3B40063C5A1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3B335B41DD4C3B40063C5A1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D3B335CD1DD4C3B40063C5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D3B335CE1DD4C3B40063C5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3B335D01DD4C3B40063C5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 92TS993A24;
+				INFOPLIST_FILE = PFTextView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = longpengfei.PFTextView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D3B335D11DD4C3B40063C5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 92TS993A24;
+				INFOPLIST_FILE = PFTextView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = longpengfei.PFTextView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D3B335D31DD4C3B40063C5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PFTextViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = longpengfei.PFTextViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PFTextView.app/PFTextView";
+			};
+			name = Debug;
+		};
+		D3B335D41DD4C3B40063C5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PFTextViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = longpengfei.PFTextViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PFTextView.app/PFTextView";
+			};
+			name = Release;
+		};
+		D3B335D61DD4C3B40063C5A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PFTextViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = longpengfei.PFTextViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PFTextView;
+			};
+			name = Debug;
+		};
+		D3B335D71DD4C3B40063C5A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = PFTextViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = longpengfei.PFTextViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = PFTextView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3B3359D1DD4C3B40063C5A1 /* Build configuration list for PBXProject "PFTextView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3B335CD1DD4C3B40063C5A1 /* Debug */,
+				D3B335CE1DD4C3B40063C5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3B335CF1DD4C3B40063C5A1 /* Build configuration list for PBXNativeTarget "PFTextView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3B335D01DD4C3B40063C5A1 /* Debug */,
+				D3B335D11DD4C3B40063C5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3B335D21DD4C3B40063C5A1 /* Build configuration list for PBXNativeTarget "PFTextViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3B335D31DD4C3B40063C5A1 /* Debug */,
+				D3B335D41DD4C3B40063C5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3B335D51DD4C3B40063C5A1 /* Build configuration list for PBXNativeTarget "PFTextViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3B335D61DD4C3B40063C5A1 /* Debug */,
+				D3B335D71DD4C3B40063C5A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3B3359A1DD4C3B40063C5A1 /* Project object */;
+}
