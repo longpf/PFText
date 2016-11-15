@@ -15,7 +15,7 @@
     
     NSError *error;
     
-    NSString *regulaStr = @"@([^\\#|\\s\\@:：]+)";
+    NSString *regulaStr = @"@([^\\#|\\s\\@:：|\\p{P}]+)";
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
     
@@ -49,6 +49,7 @@
 {
     [super configRun:attributedString];
     
+
     [attributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:self.textColor?:(id)[UIColor orangeColor] range:self.range];
     [attributedString addAttribute:NSFontAttributeName value:self.font?:[UIFont systemFontOfSize:12] range:self.range];
 }
