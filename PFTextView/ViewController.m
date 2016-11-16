@@ -38,21 +38,26 @@
     textView.numberOfLines = 7;
     textView.delegate = self;
     
+    // @nick
     PFTextAtRun *atRun = [PFTextAtRun new];
     atRun.textColor = [UIColor blueColor];
     atRun.font = [UIFont systemFontOfSize:40];
     
+    // link
     PFTextLinkRun *linkRun = [PFTextLinkRun new];
     linkRun.textColor = [UIColor redColor];
     linkRun.font = [UIFont boldSystemFontOfSize:13];
     
+    // 本地图片
     PFTextLocalImageRun *localImageRun = [PFTextLocalImageRun new];
     localImageRun.defaultSize = CGSizeMake(200, 100);
     
+    // 网络图片
     PFTextInternetImageRun *internetImageRun = [PFTextInternetImageRun new];
     internetImageRun.defaultSize = CGSizeMake(100, 80);
     internetImageRun.placeholderImage = [UIImage imageNamed:@"default"];
     
+    // 配置
     textView.settingRuns = @[atRun,localImageRun,internetImageRun,linkRun];
     
     [self.view addSubview:textView];
