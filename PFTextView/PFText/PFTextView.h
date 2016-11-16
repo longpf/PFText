@@ -36,6 +36,7 @@
  *  richTextView.settingRuns = @[run];
  *  这里不必设置run的range等属性...只需要设置@的显示的 *样式*
  *  用户可根据自己需要自定义PFRichTextRun并添加到settingRuns,来实现定制效果
+ *  使用方法也可以参照https://github.com/LongPF/PFText
  */
 @property (nonatomic, strong) NSArray <PFTextRun *> *settingRuns;
 

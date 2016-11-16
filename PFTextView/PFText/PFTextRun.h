@@ -70,6 +70,16 @@ typedef NS_ENUM(NSInteger,PFTextRunWeight) {
 @property (nonatomic, copy) void(^needDisplay)();
 
 /**
+ 长按状态后将要复制的文本,如果为nil则取self.text
+ */
+@property (nonatomic, copy) NSString *pasteText;
+
+/**
+ 长按状态下将要复制的图片
+ */
+@property (nonatomic, copy) UIImage *pasteImage;
+
+/**
  *  @brief 设置run 替换图片为字符等操作,子类根据需要重写
  *
  *  @param attributedString 需要绘制的文本

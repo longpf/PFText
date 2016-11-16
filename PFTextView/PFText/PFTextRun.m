@@ -38,6 +38,14 @@ NSString * const kPFTextAttributeName = @"kPFTextAttributeName";
     
 }
 
+- (NSString *)pasteText
+{
+    if (!_pasteText) {
+        return self.text;
+    }
+    return _pasteText;
+}
+
 
 
 @end

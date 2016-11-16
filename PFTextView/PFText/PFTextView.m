@@ -18,6 +18,7 @@ static unichar const replacementChar = 0xFFFC;
 @property (nonatomic, strong) NSMutableAttributedString *attributeString;
 @property (nonatomic, strong) NSDictionary *universalAttributes; //加在整个text上的属性
 @property (nonatomic, assign) BOOL needHeightToFit;
+@property (nonatomic, assign) PFTextRun *longPressRun;
 
 @end
 
@@ -55,6 +56,9 @@ static unichar const replacementChar = 0xFFFC;
     _paragraphTailIndent = 0;
     _needHeightToFit = NO;
     self.backgroundColor = [UIColor lightGrayColor];
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressHandler:)];
+    [self addGestureRecognizer:longPress];
 }
 
 - (void)dealloc
@@ -443,6 +447,7 @@ static unichar const replacementChar = 0xFFFC;
     return fitSize.height;
 }
 
+
 - (void)heightToFit
 {
     CGFloat fitHeight = [self heightThatFit:self.bounds.size.width];
@@ -451,6 +456,109 @@ static unichar const replacementChar = 0xFFFC;
     self.frame = fitRect;
     self.needHeightToFit = YES;
 }
+
+#pragma mark - response methods
+
+- (void)longPressHandler:(UILongPressGestureRecognizer *)longPress
+{
+    [self becomeFirstResponder];
+
+    __block PFTextRun *targetRun = nil;
+    __block CGRect targetRect = CGRectZero;
+    CGPoint runLocation = [longPress locationInView:self];
+    runLocation = CGPointMake(runLocation.x, self.frame.size.height-runLocation.y);
+    
+    [self.runRectDictionary enumerateKeysAndObjectsUsingBlock:^(id key, PFTextRun *obj, BOOL *stop){
+        
+        CGRect rect = [((NSValue *)key) CGRectValue];
+        if(CGRectContainsPoint(rect, runLocation))
+        {
+            targetRun = obj;
+            targetRect = rect;
+        }
+        
+    }];
+
+    if (targetRun == self.longPressRun && [UIMenuController sharedMenuController].isMenuVisible) {
+        return;
+    }
+    
+    UIMenuItem *copyRunText, *copyFullText, *copyRunImage;
+    NSMutableArray *items = [NSMutableArray array];
+    if (targetRun) {
+        self.longPressRun = targetRun;
+        if (targetRun.pasteText) {
+            copyRunText = [[UIMenuItem alloc]initWithTitle:@"复制选中文本" action:@selector(copyRunText:)];
+        }
+        if (targetRun.pasteImage) {
+            copyRunImage = [[UIMenuItem alloc]initWithTitle:@"复制选中图片" action:@selector(copyRunImage:)];
+        }
+    }
+    copyFullText = [[UIMenuItem alloc]initWithTitle:@"复制全部文本" action:@selector(copyFullText:)];
+    
+    
+    if (copyRunText) [items addObject:copyRunText];
+    if (copyRunImage) [items addObject:copyRunImage];
+    if (copyFullText) [items addObject:copyFullText];
+    
+    
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    [menu setMenuItems:items];
+    
+    if (!CGRectEqualToRect(targetRect, CGRectZero)) {
+        
+        targetRect.origin.y = self.frame.size.height-targetRect.origin.y;
+        
+        [menu setTargetRect:targetRect inView:self];
+    }else{
+        [menu setTargetRect:self.bounds inView:self];
+    }
+    
+    [menu setMenuVisible:YES animated:YES];
+
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    if (action == @selector(copyRunText:) || action == @selector(copyFullText:) || action == @selector(copyRunImage:)) {
+        return YES;
+    }
+    return NO;
+}
+
+
+#pragma mark - menu
+
+- (void)copyRunText:(id)sender
+{
+    if (self.longPressRun) {
+        [UIPasteboard generalPasteboard].string = self.longPressRun.pasteText;
+        self.longPressRun = nil;
+    }
+    
+}
+
+- (void)copyFullText:(id)sender
+{
+    if (self.longPressRun) {
+        [UIPasteboard generalPasteboard].string = self.text;
+        self.longPressRun = nil;
+    }
+}
+
+- (void)copyRunImage:(id)sender
+{
+    if (self.longPressRun) {
+        [UIPasteboard generalPasteboard].image = self.longPressRun.pasteImage;;
+        self.longPressRun = nil;
+    }
+}
+
 
 #pragma mark - touches
 
@@ -483,6 +591,9 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+    self.longPressRun = nil;
+    
     [super touchesEnded:touches withEvent:event];
     
     CGPoint location = [(UITouch *)[touches anyObject] locationInView:self];
