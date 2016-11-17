@@ -17,6 +17,7 @@ NSString * const kPFTextAttributeName = @"kPFTextAttributeName";
 {
     if (self = [super init]) {
         
+        self.weight = PFTextRunDefaultWeight;
         self.isResponseTouch = NO;
     }
     return self;
@@ -35,6 +36,14 @@ NSString * const kPFTextAttributeName = @"kPFTextAttributeName";
 - (void)drawRunWithRect:(CGRect)rect
 {
     
+}
+
+- (NSString *)pasteText
+{
+    if (!_pasteText) {
+        return self.text;
+    }
+    return _pasteText;
 }
 
 

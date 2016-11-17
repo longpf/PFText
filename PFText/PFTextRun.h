@@ -10,12 +10,29 @@
 #import <CoreText/CoreText.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger,PFTextRunWeight) {
+    
+    PFTextRunDefaultWeight = 500,
+    
+    PFTextRunLowWeight = 250,
+    
+    PFTextRunHeightWeight = 750,
+    
+    PFTextRunRequirWeight = 1000
+    
+};
+
 /**
  *  @brief 子类需要重写configRun: (需要调用 super),  parseText: textRunsArray: (不需要调用super)
  
  */
 
 @interface PFTextRun : NSObject
+
+/**
+ run的权重,防止一个字符被多个类型的PFTextRun正则出来. 默认值为 PFTextRunDefaultWeight
+ */
+@property (nonatomic, assign) PFTextRunWeight weight;
 
 /**
  正则或其他方式筛选出来的文本
@@ -51,6 +68,16 @@
  需要刷新的回调
  */
 @property (nonatomic, copy) void(^needDisplay)();
+
+/**
+ 长按状态后将要复制的文本,如果为nil则取self.text
+ */
+@property (nonatomic, copy) NSString *pasteText;
+
+/**
+ 长按状态下将要复制的图片
+ */
+@property (nonatomic, copy) UIImage *pasteImage;
 
 /**
  *  @brief 设置run 替换图片为字符等操作,子类根据需要重写

@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D319A9991DDD4CF90080AF51 /* PFTextAtRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A98A1DDD4CF90080AF51 /* PFTextAtRun.m */; };
+		D319A99A1DDD4CF90080AF51 /* PFTextDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A98C1DDD4CF90080AF51 /* PFTextDownloader.m */; };
+		D319A99B1DDD4CF90080AF51 /* PFTextInternetImageRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A98E1DDD4CF90080AF51 /* PFTextInternetImageRun.m */; };
+		D319A99C1DDD4CF90080AF51 /* PFTextLinkRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A9901DDD4CF90080AF51 /* PFTextLinkRun.m */; };
+		D319A99D1DDD4CF90080AF51 /* PFTextLocalImageRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A9921DDD4CF90080AF51 /* PFTextLocalImageRun.m */; };
+		D319A99E1DDD4CF90080AF51 /* PFTextRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A9941DDD4CF90080AF51 /* PFTextRun.m */; };
+		D319A99F1DDD4CF90080AF51 /* PFTextRunDelegateRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A9961DDD4CF90080AF51 /* PFTextRunDelegateRun.m */; };
+		D319A9A01DDD4CF90080AF51 /* PFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A9981DDD4CF90080AF51 /* PFTextView.m */; };
 		D33D75241DD55E0100909226 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = D33D75231DD55E0100909226 /* default.png */; };
-		D33D75361DD5627200909226 /* PFTextAtRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75271DD5627200909226 /* PFTextAtRun.m */; };
-		D33D75371DD5627200909226 /* PFTextDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75291DD5627200909226 /* PFTextDownloader.m */; };
-		D33D75381DD5627200909226 /* PFTextInternetImageRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D752B1DD5627200909226 /* PFTextInternetImageRun.m */; };
-		D33D75391DD5627200909226 /* PFTextLinkRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D752D1DD5627200909226 /* PFTextLinkRun.m */; };
-		D33D753A1DD5627200909226 /* PFTextLocalImageRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D752F1DD5627200909226 /* PFTextLocalImageRun.m */; };
-		D33D753B1DD5627200909226 /* PFTextRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75311DD5627200909226 /* PFTextRun.m */; };
-		D33D753C1DD5627200909226 /* PFTextRunDelegateRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75331DD5627200909226 /* PFTextRunDelegateRun.m */; };
-		D33D753D1DD5627200909226 /* PFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D75351DD5627200909226 /* PFTextView.m */; };
 		D3B335A71DD4C3B40063C5A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335A61DD4C3B40063C5A1 /* main.m */; };
 		D3B335AA1DD4C3B40063C5A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */; };
 		D3B335AD1DD4C3B40063C5A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335AC1DD4C3B40063C5A1 /* ViewController.m */; };
@@ -44,23 +44,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D319A9891DDD4CF90080AF51 /* PFTextAtRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextAtRun.h; sourceTree = "<group>"; };
+		D319A98A1DDD4CF90080AF51 /* PFTextAtRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextAtRun.m; sourceTree = "<group>"; };
+		D319A98B1DDD4CF90080AF51 /* PFTextDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextDownloader.h; sourceTree = "<group>"; };
+		D319A98C1DDD4CF90080AF51 /* PFTextDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextDownloader.m; sourceTree = "<group>"; };
+		D319A98D1DDD4CF90080AF51 /* PFTextInternetImageRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextInternetImageRun.h; sourceTree = "<group>"; };
+		D319A98E1DDD4CF90080AF51 /* PFTextInternetImageRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextInternetImageRun.m; sourceTree = "<group>"; };
+		D319A98F1DDD4CF90080AF51 /* PFTextLinkRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextLinkRun.h; sourceTree = "<group>"; };
+		D319A9901DDD4CF90080AF51 /* PFTextLinkRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextLinkRun.m; sourceTree = "<group>"; };
+		D319A9911DDD4CF90080AF51 /* PFTextLocalImageRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextLocalImageRun.h; sourceTree = "<group>"; };
+		D319A9921DDD4CF90080AF51 /* PFTextLocalImageRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextLocalImageRun.m; sourceTree = "<group>"; };
+		D319A9931DDD4CF90080AF51 /* PFTextRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextRun.h; sourceTree = "<group>"; };
+		D319A9941DDD4CF90080AF51 /* PFTextRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextRun.m; sourceTree = "<group>"; };
+		D319A9951DDD4CF90080AF51 /* PFTextRunDelegateRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextRunDelegateRun.h; sourceTree = "<group>"; };
+		D319A9961DDD4CF90080AF51 /* PFTextRunDelegateRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextRunDelegateRun.m; sourceTree = "<group>"; };
+		D319A9971DDD4CF90080AF51 /* PFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextView.h; sourceTree = "<group>"; };
+		D319A9981DDD4CF90080AF51 /* PFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextView.m; sourceTree = "<group>"; };
 		D33D75231DD55E0100909226 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
-		D33D75261DD5627200909226 /* PFTextAtRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextAtRun.h; sourceTree = "<group>"; };
-		D33D75271DD5627200909226 /* PFTextAtRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextAtRun.m; sourceTree = "<group>"; };
-		D33D75281DD5627200909226 /* PFTextDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextDownloader.h; sourceTree = "<group>"; };
-		D33D75291DD5627200909226 /* PFTextDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextDownloader.m; sourceTree = "<group>"; };
-		D33D752A1DD5627200909226 /* PFTextInternetImageRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextInternetImageRun.h; sourceTree = "<group>"; };
-		D33D752B1DD5627200909226 /* PFTextInternetImageRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextInternetImageRun.m; sourceTree = "<group>"; };
-		D33D752C1DD5627200909226 /* PFTextLinkRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextLinkRun.h; sourceTree = "<group>"; };
-		D33D752D1DD5627200909226 /* PFTextLinkRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextLinkRun.m; sourceTree = "<group>"; };
-		D33D752E1DD5627200909226 /* PFTextLocalImageRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextLocalImageRun.h; sourceTree = "<group>"; };
-		D33D752F1DD5627200909226 /* PFTextLocalImageRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextLocalImageRun.m; sourceTree = "<group>"; };
-		D33D75301DD5627200909226 /* PFTextRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextRun.h; sourceTree = "<group>"; };
-		D33D75311DD5627200909226 /* PFTextRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextRun.m; sourceTree = "<group>"; };
-		D33D75321DD5627200909226 /* PFTextRunDelegateRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextRunDelegateRun.h; sourceTree = "<group>"; };
-		D33D75331DD5627200909226 /* PFTextRunDelegateRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextRunDelegateRun.m; sourceTree = "<group>"; };
-		D33D75341DD5627200909226 /* PFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextView.h; sourceTree = "<group>"; };
-		D33D75351DD5627200909226 /* PFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextView.m; sourceTree = "<group>"; };
 		D3B335A21DD4C3B40063C5A1 /* PFTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B335A61DD4C3B40063C5A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3B335A81DD4C3B40063C5A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,25 +104,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D33D75251DD5627200909226 /* PFText */ = {
+		D319A9881DDD4CF90080AF51 /* PFText */ = {
 			isa = PBXGroup;
 			children = (
-				D33D75341DD5627200909226 /* PFTextView.h */,
-				D33D75351DD5627200909226 /* PFTextView.m */,
-				D33D75301DD5627200909226 /* PFTextRun.h */,
-				D33D75311DD5627200909226 /* PFTextRun.m */,
-				D33D75261DD5627200909226 /* PFTextAtRun.h */,
-				D33D75271DD5627200909226 /* PFTextAtRun.m */,
-				D33D752C1DD5627200909226 /* PFTextLinkRun.h */,
-				D33D752D1DD5627200909226 /* PFTextLinkRun.m */,
-				D33D75321DD5627200909226 /* PFTextRunDelegateRun.h */,
-				D33D75331DD5627200909226 /* PFTextRunDelegateRun.m */,
-				D33D752E1DD5627200909226 /* PFTextLocalImageRun.h */,
-				D33D752F1DD5627200909226 /* PFTextLocalImageRun.m */,
-				D33D752A1DD5627200909226 /* PFTextInternetImageRun.h */,
-				D33D752B1DD5627200909226 /* PFTextInternetImageRun.m */,
-				D33D75281DD5627200909226 /* PFTextDownloader.h */,
-				D33D75291DD5627200909226 /* PFTextDownloader.m */,
+				D319A9971DDD4CF90080AF51 /* PFTextView.h */,
+				D319A9981DDD4CF90080AF51 /* PFTextView.m */,
+				D319A9931DDD4CF90080AF51 /* PFTextRun.h */,
+				D319A9941DDD4CF90080AF51 /* PFTextRun.m */,
+				D319A9891DDD4CF90080AF51 /* PFTextAtRun.h */,
+				D319A98A1DDD4CF90080AF51 /* PFTextAtRun.m */,
+				D319A98F1DDD4CF90080AF51 /* PFTextLinkRun.h */,
+				D319A9901DDD4CF90080AF51 /* PFTextLinkRun.m */,
+				D319A9951DDD4CF90080AF51 /* PFTextRunDelegateRun.h */,
+				D319A9961DDD4CF90080AF51 /* PFTextRunDelegateRun.m */,
+				D319A9911DDD4CF90080AF51 /* PFTextLocalImageRun.h */,
+				D319A9921DDD4CF90080AF51 /* PFTextLocalImageRun.m */,
+				D319A98D1DDD4CF90080AF51 /* PFTextInternetImageRun.h */,
+				D319A98E1DDD4CF90080AF51 /* PFTextInternetImageRun.m */,
+				D319A98B1DDD4CF90080AF51 /* PFTextDownloader.h */,
+				D319A98C1DDD4CF90080AF51 /* PFTextDownloader.m */,
 			);
 			path = PFText;
 			sourceTree = "<group>";
@@ -130,6 +130,7 @@
 		D3B335991DD4C3B40063C5A1 = {
 			isa = PBXGroup;
 			children = (
+				D319A9881DDD4CF90080AF51 /* PFText */,
 				D3B335A41DD4C3B40063C5A1 /* PFTextView */,
 				D3B335BE1DD4C3B40063C5A1 /* PFTextViewTests */,
 				D3B335C91DD4C3B40063C5A1 /* PFTextViewUITests */,
@@ -150,7 +151,6 @@
 		D3B335A41DD4C3B40063C5A1 /* PFTextView */ = {
 			isa = PBXGroup;
 			children = (
-				D33D75251DD5627200909226 /* PFText */,
 				D3B335A81DD4C3B40063C5A1 /* AppDelegate.h */,
 				D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */,
 				D3B335AB1DD4C3B40063C5A1 /* ViewController.h */,
@@ -327,16 +327,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B335AD1DD4C3B40063C5A1 /* ViewController.m in Sources */,
-				D33D753D1DD5627200909226 /* PFTextView.m in Sources */,
-				D33D75371DD5627200909226 /* PFTextDownloader.m in Sources */,
-				D33D753B1DD5627200909226 /* PFTextRun.m in Sources */,
-				D33D75361DD5627200909226 /* PFTextAtRun.m in Sources */,
+				D319A9A01DDD4CF90080AF51 /* PFTextView.m in Sources */,
+				D319A99A1DDD4CF90080AF51 /* PFTextDownloader.m in Sources */,
+				D319A99E1DDD4CF90080AF51 /* PFTextRun.m in Sources */,
+				D319A9991DDD4CF90080AF51 /* PFTextAtRun.m in Sources */,
 				D3B335AA1DD4C3B40063C5A1 /* AppDelegate.m in Sources */,
 				D3B335A71DD4C3B40063C5A1 /* main.m in Sources */,
-				D33D75381DD5627200909226 /* PFTextInternetImageRun.m in Sources */,
-				D33D753A1DD5627200909226 /* PFTextLocalImageRun.m in Sources */,
-				D33D75391DD5627200909226 /* PFTextLinkRun.m in Sources */,
-				D33D753C1DD5627200909226 /* PFTextRunDelegateRun.m in Sources */,
+				D319A99B1DDD4CF90080AF51 /* PFTextInternetImageRun.m in Sources */,
+				D319A99D1DDD4CF90080AF51 /* PFTextLocalImageRun.m in Sources */,
+				D319A99C1DDD4CF90080AF51 /* PFTextLinkRun.m in Sources */,
+				D319A99F1DDD4CF90080AF51 /* PFTextRunDelegateRun.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
