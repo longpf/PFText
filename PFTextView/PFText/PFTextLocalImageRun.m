@@ -27,8 +27,7 @@
         
         if (runArray) {
             UIImage *image = [UIImage imageNamed:imageName];
-            NSString *assertDescription = [NSString stringWithFormat:@"本地图片:%@不存在",imageName];
-            NSAssert(image, assertDescription);
+            NSAssert(image, @"本地图片不存在");
             PFTextLocalImageRun *run = [[PFTextLocalImageRun alloc]init];
             run.image = image;
             run.imageName = imageName;

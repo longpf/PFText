@@ -137,7 +137,7 @@ static unichar const replacementChar = 0xFFFC;
     CTFrameGetLineOrigins(frameRef, CFRangeMake(0, 0), lineOrigins);
     
     //绘制
-    NSInteger lastLineIndex = [self drawLineByLine:lines lineOrigins:lineOrigins context:context];
+    unsigned long lastLineIndex = [self drawLineByLine:lines lineOrigins:lineOrigins context:context];
     
     //将每一个的PFRichTextRun的rect储存起来
     for (int i = 0; i < CFArrayGetCount(lines); i++) {
@@ -171,10 +171,10 @@ static unichar const replacementChar = 0xFFFC;
  
  @return 返回最后一行的角标
  */
-- (NSInteger)drawLineByLine:(CFArrayRef)lines lineOrigins:(CGPoint *)lineOrigins context:(CGContextRef)context;
+- (unsigned long)drawLineByLine:(CFArrayRef)lines lineOrigins:(CGPoint *)lineOrigins context:(CGContextRef)context;
 {
     
-    NSInteger lineCount = CFArrayGetCount(lines);
+    unsigned long lineCount = CFArrayGetCount(lines);
     
     if (lineCount < 1) return 0;
     
@@ -242,7 +242,7 @@ static unichar const replacementChar = 0xFFFC;
         else if (self.lineBreakMode == NSLineBreakByTruncatingMiddle){
             CFArrayRef lastLineRuns = CTLineGetGlyphRuns(lastLine);
             NSInteger lastLineRunCount = CFArrayGetCount(lastLineRuns) ;
-            CTRunRef lastLineMiddleRun = CFArrayGetValueAtIndex(lastLineRuns, (NSInteger)lastLineRunCount/2);
+            CTRunRef lastLineMiddleRun = CFArrayGetValueAtIndex(lastLineRuns, (unsigned long)lastLineRunCount/2);
             CFRange lastLineMiddleRunRange = CTRunGetStringRange(lastLineMiddleRun);
             insertCharacterLocation = (lastLineMiddleRunRange.location-lastLineLocation) + lastLineMiddleRunRange.length;
         }
