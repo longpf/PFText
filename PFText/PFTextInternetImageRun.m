@@ -14,7 +14,7 @@
 - (void)parseText:(NSString *)string textRunsArray:(NSMutableArray *)runArray
 {
     NSError *error;
-    NSString *regulaStr = @"&[^&\\s]+?&"; //#[^#\\s]+?#
+    NSString *regulaStr = @"``[^``\\s]+?``";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
     NSArray *mathes = [regex matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     
@@ -22,8 +22,8 @@
         NSString *matchString = [string substringWithRange:match.range];
         NSString *urlString = matchString;
         if (matchString.length>2) {
-            urlString = [urlString substringToIndex:urlString.length-1];
-            urlString = [urlString substringFromIndex:1];
+            urlString = [urlString substringToIndex:urlString.length-2];
+            urlString = [urlString substringFromIndex:2];
         }
         
         if (runArray) {
