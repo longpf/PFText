@@ -13,7 +13,7 @@
 - (void)parseText:(NSString *)string textRunsArray:(NSMutableArray *)runArray
 {
     NSError *error;
-    NSString *regulaStr = @"#[^#\\s]+?#";
+    NSString *regulaStr = @"`[^`\\s]+?`";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr options:NSRegularExpressionCaseInsensitive error:&error];
     NSArray *mathes = [regex matchesInString:string options:0 range:NSMakeRange(0, string.length)];
     
@@ -27,6 +27,9 @@
         
         if (runArray) {
             UIImage *image = [UIImage imageNamed:imageName];
+            if (!image) {
+                continue;
+            }
             NSAssert(image, @"本地图片不存在");
             PFTextLocalImageRun *run = [[PFTextLocalImageRun alloc]init];
             run.image = image;
