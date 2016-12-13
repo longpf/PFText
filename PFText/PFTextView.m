@@ -196,6 +196,7 @@ static unichar const replacementChar = 0xFFFC;
         (CTLineGetStringRange(lastLine).location+CTLineGetStringRange(lastLine).length == _attributeString.string.length))
     {
         CTLineDraw(lastLine, context);
+        [self storeRunRectAndDrawRunSelf:lastLine lineOrigin:lastLineOrigin];
     }else{
         
         CTLineBreakMode lineBreak = (CTLineBreakMode)self.lineBreakMode;
