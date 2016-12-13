@@ -8,6 +8,9 @@
 
 #import "PFTextRun.h"
 
+/**
+ @nick,   @好友
+ */
 @interface PFTextAtRun : PFTextRun
 
 @end

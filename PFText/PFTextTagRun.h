@@ -8,6 +8,10 @@
 
 #import "PFTextRun.h"
 
+
+/**
+ #tag#,  #话题#
+ */
 @interface PFTextTagRun : PFTextRun
 
 @end
