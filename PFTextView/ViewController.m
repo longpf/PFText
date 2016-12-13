@@ -20,6 +20,8 @@
 
 @interface ViewController () <PFTextViewDelegate>
 
+@property (nonatomic, strong) UILabel *logLabel;
+
 @end
 
 @implementation ViewController
@@ -28,9 +30,9 @@
     [super viewDidLoad];
 
     
-    __block PFTextView *textView = [[PFTextView alloc]initWithFrame:CGRectMake(0, 200, SCREEN_SIZE.width, 350)];
+    PFTextView *textView = [[PFTextView alloc]initWithFrame:CGRectMake(0, 100, SCREEN_SIZE.width, 350)];
     
-    textView.text = @"PFText是一个轻量级的coretext富文本展示和编辑工具。一些基本设置可参见#PFTextView.h#,其他已经实现了@nick,#tag#,linkhttps://github.com/LongPF/PFText的识别、点击操作。本地图片`penguin.png`，网络图片``http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg``。自适应高度，粘贴板功能。注：可根据需要复写@PFTextRun，根据特定的正则和特定的基本设置定制";
+    textView.text = @"PFText是一个轻量级的coretext富文本展示和编辑工具。一些基本设置可参见#PFTextView.h#,其他已经实现了@nick,#tag#,linkhttps://github.com/LongPF/PFText的识别、点击操作。本地图片`penguin.png`，网络图片``http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg``。自适应高度，粘贴板功能。注：可根据需要复写#PFTextRun#，根据特定的正则和特定的基本设置定制";
     
     
     textView.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -75,11 +77,37 @@
     [textView heightToFit];
     
    
+    
+    
+    
+    
+    
+    [self.view addSubview:self.logLabel];
+    
+    self.logLabel.frame = CGRectMake(15, SCREEN_SIZE.height-200, SCREEN_SIZE.width-15*2, 44);
+    
 }
 
 - (void)textView:(PFTextView *)view touchEndRun:(PFTextRun *)run
 {
     NSLog(@"touchEnd %@ = %@ ",[run class],run);
+    self.logLabel.text = [NSString stringWithFormat:@"%@%@  -\n          %@",@"   log : ",[run class],run];
+}
+
+- (UILabel *)logLabel
+{
+    if (!_logLabel) {
+        _logLabel = [UILabel new];
+        _logLabel.textColor = [UIColor colorWithRed:35.0/255 green:35.0/255 blue:43.0/255 alpha:1];
+        _logLabel.font = [UIFont systemFontOfSize:14];
+        _logLabel.layer.masksToBounds = YES;
+        _logLabel.layer.cornerRadius = 3;
+        _logLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _logLabel.layer.borderWidth = 0.5;
+        _logLabel.text = @"   log :";
+        _logLabel.numberOfLines = 0;
+    }
+    return _logLabel;
 }
 
 
