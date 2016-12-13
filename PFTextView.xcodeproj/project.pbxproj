@@ -16,6 +16,8 @@
 		D319A99F1DDD4CF90080AF51 /* PFTextRunDelegateRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A9961DDD4CF90080AF51 /* PFTextRunDelegateRun.m */; };
 		D319A9A01DDD4CF90080AF51 /* PFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D319A9981DDD4CF90080AF51 /* PFTextView.m */; };
 		D33D75241DD55E0100909226 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = D33D75231DD55E0100909226 /* default.png */; };
+		D36D64C21DFE832F007B94B9 /* PFTextTagRun.m in Sources */ = {isa = PBXBuildFile; fileRef = D36D64C11DFE832F007B94B9 /* PFTextTagRun.m */; };
+		D36D64C41DFE925F007B94B9 /* penguin.png in Resources */ = {isa = PBXBuildFile; fileRef = D36D64C31DFE925F007B94B9 /* penguin.png */; };
 		D3B335A71DD4C3B40063C5A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335A61DD4C3B40063C5A1 /* main.m */; };
 		D3B335AA1DD4C3B40063C5A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */; };
 		D3B335AD1DD4C3B40063C5A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335AC1DD4C3B40063C5A1 /* ViewController.m */; };
@@ -61,6 +63,9 @@
 		D319A9971DDD4CF90080AF51 /* PFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextView.h; sourceTree = "<group>"; };
 		D319A9981DDD4CF90080AF51 /* PFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextView.m; sourceTree = "<group>"; };
 		D33D75231DD55E0100909226 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		D36D64C01DFE832F007B94B9 /* PFTextTagRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextTagRun.h; sourceTree = "<group>"; };
+		D36D64C11DFE832F007B94B9 /* PFTextTagRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextTagRun.m; sourceTree = "<group>"; };
+		D36D64C31DFE925F007B94B9 /* penguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguin.png; sourceTree = "<group>"; };
 		D3B335A21DD4C3B40063C5A1 /* PFTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B335A61DD4C3B40063C5A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3B335A81DD4C3B40063C5A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -113,6 +118,8 @@
 				D319A9941DDD4CF90080AF51 /* PFTextRun.m */,
 				D319A9891DDD4CF90080AF51 /* PFTextAtRun.h */,
 				D319A98A1DDD4CF90080AF51 /* PFTextAtRun.m */,
+				D36D64C01DFE832F007B94B9 /* PFTextTagRun.h */,
+				D36D64C11DFE832F007B94B9 /* PFTextTagRun.m */,
 				D319A98F1DDD4CF90080AF51 /* PFTextLinkRun.h */,
 				D319A9901DDD4CF90080AF51 /* PFTextLinkRun.m */,
 				D319A9951DDD4CF90080AF51 /* PFTextRunDelegateRun.h */,
@@ -155,6 +162,7 @@
 				D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */,
 				D3B335AB1DD4C3B40063C5A1 /* ViewController.h */,
 				D3B335AC1DD4C3B40063C5A1 /* ViewController.m */,
+				D36D64C31DFE925F007B94B9 /* penguin.png */,
 				D33D75231DD55E0100909226 /* default.png */,
 				D3B335AE1DD4C3B40063C5A1 /* Main.storyboard */,
 				D3B335B11DD4C3B40063C5A1 /* Assets.xcassets */,
@@ -301,6 +309,7 @@
 				D3B335B51DD4C3B40063C5A1 /* LaunchScreen.storyboard in Resources */,
 				D3B335B21DD4C3B40063C5A1 /* Assets.xcassets in Resources */,
 				D3B335B01DD4C3B40063C5A1 /* Main.storyboard in Resources */,
+				D36D64C41DFE925F007B94B9 /* penguin.png in Resources */,
 				D33D75241DD55E0100909226 /* default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B335AD1DD4C3B40063C5A1 /* ViewController.m in Sources */,
+				D36D64C21DFE832F007B94B9 /* PFTextTagRun.m in Sources */,
 				D319A9A01DDD4CF90080AF51 /* PFTextView.m in Sources */,
 				D319A99A1DDD4CF90080AF51 /* PFTextDownloader.m in Sources */,
 				D319A99E1DDD4CF90080AF51 /* PFTextRun.m in Sources */,
