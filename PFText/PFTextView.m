@@ -55,7 +55,7 @@ static unichar const replacementChar = 0xFFFC;
     _paragraphHeadIndent = 0;
     _paragraphTailIndent = 0;
     _needHeightToFit = NO;
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor whiteColor];
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressHandler:)];
     [self addGestureRecognizer:longPress];
@@ -63,7 +63,7 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)dealloc
 {
-    NSLog(@"[PFRichTextView dealloc]");
+//    NSLog(@"[PFRichTextView dealloc]");
 }
 
 #pragma mark - draw
@@ -385,6 +385,12 @@ static unichar const replacementChar = 0xFFFC;
 {
     for (PFTextRun *settingRun in self.settingRuns) {
         
+        if (!settingRun.textColor) {
+            settingRun.textColor = self.textColor;
+        }
+        if (!settingRun.font) {
+            settingRun.font = self.font;
+        }
         [settingRun parseText:string textRunsArray:runs];
         
     }

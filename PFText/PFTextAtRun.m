@@ -50,7 +50,7 @@
     [super configRun:attributedString];
     
 
-    [attributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:self.textColor?:(id)[UIColor orangeColor] range:self.range];
+    [attributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:self.textColor?:(id)[UIColor colorWithRed:255.0/255 green:124.0/255 blue:78.0/255 alpha:1] range:self.range];
     [attributedString addAttribute:NSFontAttributeName value:self.font?:[UIFont systemFontOfSize:12] range:self.range];
 }
 

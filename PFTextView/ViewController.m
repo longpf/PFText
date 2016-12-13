@@ -13,6 +13,7 @@
 #import "PFTextLocalImageRun.h"
 #import "PFTextView.h"
 #import "PFTextLinkRun.h"
+#import "PFTextTagRun.h"
 
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 
@@ -27,43 +28,51 @@
     [super viewDidLoad];
 
     
-    __block PFTextView *textView = [[PFTextView alloc]initWithFrame:CGRectMake(0, 40, SCREEN_SIZE.width, 350)];
-    textView.text = @"当灰烬查封了凝霜的@屋檐,当车菊草化作深秋的露水#default#,我用固执的枯藤做成行囊&http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg&,走向了那布满荆棘的他乡,当大地铺满了悲泣的落叶,当杜鹃花化作远空的雾霭,祝福我吧我最思念的亲人,那就是我向你告别的身影,也许迷途的惆怅会扯碎我的脚步,可我相信未来会给我一双梦想的翅膀,虽然失败的苦痛已让我遍体鳞伤,https://github.com/LongPF/PFText可我坚信光明就在远方";
+    __block PFTextView *textView = [[PFTextView alloc]initWithFrame:CGRectMake(0, 200, SCREEN_SIZE.width, 350)];
+    
+    textView.text = @"PFText是一个轻量级的coretext富文本展示和编辑工具。一些基本设置可参见#PFTextView.h#,其他已经实现了@nick,#tag#,linkhttps://github.com/LongPF/PFText的识别、点击操作。本地图片`penguin.png`，网络图片``http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg``。自适应高度，粘贴板功能。注：可根据需要复写@PFTextRun，根据特定的正则和特定的基本设置定制";
+    
     
     textView.lineBreakMode = NSLineBreakByTruncatingTail;
-    textView.textColor = [UIColor greenColor];
+    textView.textColor = [UIColor colorWithRed:35.0/255 green:35.0/255 blue:43.0/255 alpha:1];
     textView.firstLineHeadIndent = 30;
     textView.paragraphHeadIndent = 10;
     textView.paragraphTailIndent = -10;
     textView.numberOfLines = 7;
+    textView.font = [UIFont systemFontOfSize:14];
     textView.delegate = self;
     
     // @nick
     PFTextAtRun *atRun = [PFTextAtRun new];
-    atRun.textColor = [UIColor blueColor];
-    atRun.font = [UIFont systemFontOfSize:40];
+    atRun.textColor = [UIColor colorWithRed:255.0/255 green:124.0/255 blue:78.0/255 alpha:1];
+    atRun.font = [UIFont systemFontOfSize:14];
     
     // link
     PFTextLinkRun *linkRun = [PFTextLinkRun new];
-    linkRun.textColor = [UIColor redColor];
-    linkRun.font = [UIFont boldSystemFontOfSize:13];
+    linkRun.textColor = [UIColor colorWithRed:0 green:122.0/255 blue:255.0/255 alpha:1];
+    linkRun.font = [UIFont boldSystemFontOfSize:14];
+    
+    // tag
+    PFTextTagRun *tag = [PFTextTagRun new];
+    tag.textColor = [UIColor colorWithRed:255.0/255 green:124.0/255 blue:78.0/255 alpha:1];
+    tag.font = [UIFont boldSystemFontOfSize:14];
     
     // 本地图片
     PFTextLocalImageRun *localImageRun = [PFTextLocalImageRun new];
-    localImageRun.defaultSize = CGSizeMake(200, 100);
+    localImageRun.defaultSize = CGSizeMake(30, 30);
     
     // 网络图片
     PFTextInternetImageRun *internetImageRun = [PFTextInternetImageRun new];
-    internetImageRun.defaultSize = CGSizeMake(100, 80);
+    internetImageRun.defaultSize = CGSizeMake(30, 30);
     internetImageRun.placeholderImage = [UIImage imageNamed:@"default"];
     
     // 配置
-    textView.settingRuns = @[atRun,localImageRun,internetImageRun,linkRun];
+    textView.settingRuns = @[atRun,localImageRun,internetImageRun,linkRun,tag];
+    
+    textView.backgroundColor = [UIColor colorWithRed:237.0/255 green:237.0/255 blue:237.0/255 alpha:1];
     
     [self.view addSubview:textView];
     [textView heightToFit];
-    
-    
     
    
 }
