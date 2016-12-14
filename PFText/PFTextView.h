@@ -41,7 +41,7 @@
 @property (nonatomic, strong) NSArray <PFTextRun *> *settingRuns;
 
 /**
- 回调触摸时间的代理
+ 回调触摸事件的代理
  */
 @property (nonatomic, assign) id<PFTextViewDelegate>delegate;
 
