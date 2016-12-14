@@ -14,7 +14,7 @@ static unichar const replacementChar = 0xFFFC;
 @interface PFTextView ()
 
 @property (nonatomic, strong) NSMutableArray *runs; //需要特殊处理的run的数组
-@property (nonatomic, strong) NSMutableDictionary *runRectDictionary; //储存每个PFRichTextRun的CGRect
+@property (nonatomic, strong) NSMutableDictionary *runRectDictionary; //储存每个PFTextRun的CGRect
 @property (nonatomic, strong) NSMutableAttributedString *attributeString;
 @property (nonatomic, strong) NSDictionary *universalAttributes; //加在整个text上的属性
 @property (nonatomic, assign) BOOL needHeightToFit;
@@ -63,7 +63,7 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)dealloc
 {
-//    NSLog(@"[PFRichTextView dealloc]");
+//    NSLog(@"[PFTextView dealloc]");
 }
 
 #pragma mark - draw
@@ -139,7 +139,7 @@ static unichar const replacementChar = 0xFFFC;
     //绘制
     unsigned long lastLineIndex = [self drawLineByLine:lines lineOrigins:lineOrigins context:context];
     
-    //将每一个的PFRichTextRun的rect储存起来
+    //将每一个的PFTextRun的rect储存起来
     for (int i = 0; i < CFArrayGetCount(lines); i++) {
         
         if (lastLineIndex > 0 &&  i >= lastLineIndex) {

@@ -29,13 +29,13 @@
 @property (nonatomic, strong) UIFont *font;
 
 /**
- 设置文本的样式,可以根据需要自定义 PFRichTextRun 添加到数组中. 例如:
- *  PFRichTextAtRun *run = [PFRichTextAtRun new];
+ 设置文本的样式,可以根据需要自定义 PFTextRun 添加到数组中. 例如:
+ *  PFTextAtRun *run = [PFTextAtRun new];
  *  run.font = ..;
  *  run.textColor = ..;
- *  richTextView.settingRuns = @[run];
+ *  textView.settingRuns = @[run];
  *  这里不必设置run的range等属性...只需要设置@的显示的 *样式*
- *  用户可根据自己需要自定义PFRichTextRun并添加到settingRuns,来实现定制效果
+ *  用户可根据自己需要自定义PFTextRun并添加到settingRuns,来实现定制效果
  *  使用方法也可以参照https://github.com/LongPF/PFText
  */
 @property (nonatomic, strong) NSArray <PFTextRun *> *settingRuns;
