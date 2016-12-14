@@ -66,6 +66,7 @@
 		D36D64C01DFE832F007B94B9 /* PFTextTagRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextTagRun.h; sourceTree = "<group>"; };
 		D36D64C11DFE832F007B94B9 /* PFTextTagRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextTagRun.m; sourceTree = "<group>"; };
 		D36D64C31DFE925F007B94B9 /* penguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguin.png; sourceTree = "<group>"; };
+		D36D64C51E0108A6007B94B9 /* PFText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFText.h; sourceTree = "<group>"; };
 		D3B335A21DD4C3B40063C5A1 /* PFTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PFTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B335A61DD4C3B40063C5A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3B335A81DD4C3B40063C5A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		D319A9881DDD4CF90080AF51 /* PFText */ = {
 			isa = PBXGroup;
 			children = (
+				D36D64C51E0108A6007B94B9 /* PFText.h */,
 				D319A9971DDD4CF90080AF51 /* PFTextView.h */,
 				D319A9981DDD4CF90080AF51 /* PFTextView.m */,
 				D319A9931DDD4CF90080AF51 /* PFTextRun.h */,

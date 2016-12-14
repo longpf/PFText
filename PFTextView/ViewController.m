@@ -7,13 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "PFTextRun.h"
-#import "PFTextAtRun.h"
-#import "PFTextInternetImageRun.h"
-#import "PFTextLocalImageRun.h"
-#import "PFTextView.h"
-#import "PFTextLinkRun.h"
-#import "PFTextTagRun.h"
+#import "PFText.h"
 
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 
