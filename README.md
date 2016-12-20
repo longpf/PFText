@@ -30,7 +30,7 @@ paragraphHeadIndent   | 段落前缩进
 paragraphTailIndent   | 段落尾缩进,值应该为负值
 firstLineHeadIndent   | 首行缩进
 **heightThatFit:**    | 获取一个最适合的高度,不会改变自身的高度
-**heightToFit Cell**  | 该方法会调用heightThatFit:,传入width = self.bounds.size.width, 该方法会改变自身的高度
+**heightToFit**  	  | 该方法会调用heightThatFit:,传入width = self.bounds.size.width, 该方法会改变自身的高度
 
 安装
 ==============
