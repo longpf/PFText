@@ -1,7 +1,7 @@
 PFText
 ==============
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/LongPF/PFText/master/LICENSE)&nbsp;
-[![CocoaPods](http://img.shields.io/cocoapods/v/PFText.svg?style=flat)](http://cocoapods.org/?q= PFText)&nbsp;
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/PFText.svg)](https://img.shields.io/cocoapods/v/PFText.svg)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/PFText.svg?style=flat)](http://cocoapods.org/?q= PFText)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 
