@@ -88,6 +88,11 @@
     self.logLabel.text = [NSString stringWithFormat:@"%@%@  -\n          %@",@"   log : ",[run class],run];
 }
 
+- (void)textView:(PFTextView *)view touchEnded:(UIEvent *)event
+{
+    
+}
+
 - (UILabel *)logLabel
 {
     if (!_logLabel) {

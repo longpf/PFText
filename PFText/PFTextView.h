@@ -17,7 +17,7 @@
 - (void)textView:(PFTextView *)view touchBeginRun:(PFTextRun *)run;
 - (void)textView:(PFTextView *)view touchEndRun:(PFTextRun *)run;
 - (void)textView:(PFTextView *)view touchCanceledRun:(PFTextRun *)run;
-
+- (void)textView:(PFTextView *)view touchEnded:(UIEvent *)event; //该方法是为了把点击事件代理出去,执行textView:touchEndRun:就不执行这个
 @end
 
 @interface PFTextView : UIView

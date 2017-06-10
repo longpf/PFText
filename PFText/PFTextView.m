@@ -576,6 +576,8 @@ static unichar const replacementChar = 0xFFFC;
     CGPoint location = [(UITouch *)[touches anyObject] locationInView:self];
     CGPoint runLocation = CGPointMake(location.x, self.frame.size.height - location.y);
     
+    __block BOOL hasEventRun = NO;
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(textView:touchBeginRun:)])
     {
         __weak typeof(self) wself = self;
@@ -585,9 +587,16 @@ static unichar const replacementChar = 0xFFFC;
             CGRect rect = [((NSValue *)key) CGRectValue];
             if(CGRectContainsPoint(rect, runLocation))
             {
+                hasEventRun = YES;
                 [wself.delegate textView:wself touchBeginRun:obj];
             }
         }];
+    }
+    
+    if (!hasEventRun) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(textView:touchEnded:)]) {
+            [self.delegate textView:self touchEnded:event];
+        }
     }
 }
 
