@@ -29,6 +29,11 @@
 @property (nonatomic, strong) UIFont *font;
 
 /**
+ 关闭UIMenuController功能
+ **/
+@property (nonatomic, assign) BOOL disableMenuController;
+
+/**
  设置文本的样式,可以根据需要自定义 PFTextRun 添加到数组中. 例如:
  *  PFTextAtRun *run = [PFTextAtRun new];
  *  run.font = ..;

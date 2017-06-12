@@ -37,6 +37,7 @@
     textView.numberOfLines = 7;
     textView.font = [UIFont systemFontOfSize:14];
     textView.delegate = self;
+    textView.disableMenuController = YES;
     
     // @nick
     PFTextAtRun *atRun = [PFTextAtRun new];

@@ -468,6 +468,10 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)longPressHandler:(UILongPressGestureRecognizer *)longPress
 {
+    if (self.disableMenuController) {
+        return;
+    }
+    
     [self becomeFirstResponder];
 
     __block PFTextRun *targetRun = nil;
