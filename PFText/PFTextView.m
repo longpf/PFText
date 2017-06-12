@@ -552,10 +552,11 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)copyFullText:(id)sender
 {
-    if (self.longPressRun) {
+    if (self.text && [self.text isKindOfClass:[NSString class]] && self.text.length) {
         [UIPasteboard generalPasteboard].string = self.text;
         self.longPressRun = nil;
     }
+
 }
 
 - (void)copyRunImage:(id)sender
