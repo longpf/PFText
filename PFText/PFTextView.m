@@ -29,8 +29,9 @@ static unichar const replacementChar = 0xFFFC;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    if (self = [super initWithFrame:frame]) {
+    if (self = [super initWithFrame:CGRectZero]) {
         [self initialize];
+        self.frame = frame;
     }
     return self;
 }
@@ -45,6 +46,9 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)initialize
 {
+    self.backgroundColor = [UIColor clearColor];
+    self.opaque = NO;
+    
     self.runs = [NSMutableArray array];
     self.runRectDictionary = [NSMutableDictionary dictionary];
     
@@ -60,7 +64,8 @@ static unichar const replacementChar = 0xFFFC;
     layer.asyncLayerDelegate = self;
     layer.displaysAsynchronously = YES;
     //layer.drawsAsynchronously = YES;
-    self.backgroundColor = [UIColor whiteColor];
+    layer.contentsScale = [UIScreen mainScreen].scale;
+    self.contentMode = UIViewContentModeRedraw;
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressHandler:)];
     [self addGestureRecognizer:longPress];
@@ -103,10 +108,11 @@ static unichar const replacementChar = 0xFFFC;
 
 #pragma mark - draw
 
-- (void)drawRect:(CGRect)rect
-{
-    [super drawRect:rect];
-}
+//如果实现这个方法则则不回绘制背景色 原因??
+//- (void)drawRect:(CGRect)rect
+//{
+//    [super drawRect:rect];
+//}
 
 - (void)_draw:(CGContextRef)context
 {
@@ -150,7 +156,8 @@ static unichar const replacementChar = 0xFFFC;
                 if (wself.needHeightToFit) {
                     [wself heightToFit];
                 }
-                [wself setNeedsDisplay];
+//                [wself setNeedsDisplay];
+                [wself.layer setNeedsDisplay];
             });
         };
     }
@@ -776,6 +783,5 @@ static unichar const replacementChar = 0xFFFC;
         _numberOfLines = numberOfLines;
     }
 }
-
 
 @end

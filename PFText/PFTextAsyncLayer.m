@@ -102,7 +102,10 @@ static dispatch_queue_t _pf_textlayerReleaseQueue(){
     _PFTextSentinel *sentiel = _sentinel;
     __strong id<PFTextAsyncLayerDelegate>delegate = self.asyncLayerDelegate;
 
-    NSAssert(self.asyncLayerDelegate, @"asyncLayerDelegate属性错误");
+    if (!delegate) {
+        NSAssert(delegate, @"asyncLayerDelegate属性错误");
+        return;
+    }
     
     if (async) {
         
@@ -114,13 +117,51 @@ static dispatch_queue_t _pf_textlayerReleaseQueue(){
             return thisValue != sentiel.value;
         };
         
+        CGSize size = self.bounds.size;
+        BOOL opaque = self.opaque;
+        CGFloat scale = self.contentsScale;
+        
+        CGColorRef backgroundColor = (opaque && self.backgroundColor) ? CGColorRetain(self.backgroundColor) : NULL;
+        if (size.width < 1 || size.height < 1) {
+            CGImageRef image = (__bridge_retained CGImageRef)(self.contents);
+            self.contents = nil;
+            if (image) {
+                dispatch_async(_pf_textlayerReleaseQueue(), ^{
+                    CFRelease(image);
+                });
+            }
+            if ([delegate respondsToSelector:@selector(layerDisplayCompletion:finish:)]) {
+                [delegate layerDisplayCompletion:self finish:YES];
+            }
+            CGColorRelease(backgroundColor);
+            return;
+        }
+        
         dispatch_async(_pf_textLayerDsipalyerQueue(), ^{
            
             if (isSuspended()) {
+                CGColorRelease(backgroundColor);
                 return;
             }
             UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, self.contentsScale);
             CGContextRef context = UIGraphicsGetCurrentContext();
+            
+            if (opaque && context) {
+                CGContextSaveGState(context);
+                if (!backgroundColor || CGColorGetAlpha(backgroundColor) < 1) {
+                    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+                    CGContextAddRect(context, CGRectMake(0, 0, size.width * scale, size.height * scale));
+                    CGContextFillPath(context);
+                }
+                if (backgroundColor) {
+                    CGContextSetFillColorWithColor(context, backgroundColor);
+                    CGContextAddRect(context, CGRectMake(0, 0, size.width * scale, size.height * scale));
+                    CGContextFillPath(context);
+                }
+                CGContextRestoreGState(context);
+                CGColorRelease(backgroundColor);
+            }
+            
             if ([delegate respondsToSelector:@selector(layerDispaly:size:isSuspended:)]) {
                 [delegate layerDispaly:context size:CGSizeZero isSuspended:isSuspended];
             }
