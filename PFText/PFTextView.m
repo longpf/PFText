@@ -7,11 +7,12 @@
 //
 
 #import "PFTextView.h"
+#import "PFTextAsyncLayer.h"
 
 static unichar const replacementChar = 0xFFFC;
 
 
-@interface PFTextView ()
+@interface PFTextView ()<PFTextAsyncLayerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *runs; //需要特殊处理的run的数组
 @property (nonatomic, strong) NSMutableDictionary *runRectDictionary; //储存每个PFTextRun的CGRect
@@ -55,6 +56,10 @@ static unichar const replacementChar = 0xFFFC;
     _paragraphHeadIndent = 0;
     _paragraphTailIndent = 0;
     _needHeightToFit = NO;
+    PFTextAsyncLayer *layer = (PFTextAsyncLayer *)self.layer;
+    layer.asyncLayerDelegate = self;
+    layer.displaysAsynchronously = YES;
+    //layer.drawsAsynchronously = YES;
     self.backgroundColor = [UIColor whiteColor];
     
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressHandler:)];
@@ -66,13 +71,46 @@ static unichar const replacementChar = 0xFFFC;
 //    NSLog(@"[PFTextView dealloc]");
 }
 
+- (void)setNeedsDisplay
+{
+    [super setNeedsDisplay];
+}
+
++ (Class)layerClass
+{
+    return [PFTextAsyncLayer class];
+}
+
+#pragma mark - PFTextAsyncLayerDelegate
+
+- (void)layerWillDraw:(CALayer *)layer
+{
+    
+}
+
+- (void)layerDispaly:(CGContextRef)context size:(CGSize)size isSuspended:(BOOL (^)(void))isSuspended
+{
+    if (isSuspended()) {
+        return;
+    }
+    [self _draw:context];
+}
+
+- (void)layerDisplayCompletion:(PFTextAsyncLayer *)layer finish:(BOOL)finish
+{
+    
+}
+
 #pragma mark - draw
 
 - (void)drawRect:(CGRect)rect
 {
+    [super drawRect:rect];
+}
+
+- (void)_draw:(CGContextRef)context
+{
     [self.runRectDictionary removeAllObjects];
-    
-    
     
     //解析文本 找出需要特殊处理的run
     if (self.runs.count == 0) {
@@ -117,7 +155,7 @@ static unichar const replacementChar = 0xFFFC;
         };
     }
     
-    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextRef context = UIGraphicsGetCurrentContext();
     //修正坐标系
     CGAffineTransform transform = CGAffineTransformIdentity;
     transform = CGAffineTransformMakeTranslation(0, self.bounds.size.height);
@@ -149,8 +187,7 @@ static unichar const replacementChar = 0xFFFC;
         CTLineRef lineRef = CFArrayGetValueAtIndex(lines, i);
         CGPoint lineOrigin = lineOrigins[i];
         
-        [self storeRunRectAndDrawRunSelf:lineRef lineOrigin:lineOrigin];
-        
+        [self storeRunRectAndDrawRunSelf:context lineRef:lineRef lineOrigin:lineOrigin];
         
     }
     
@@ -158,9 +195,13 @@ static unichar const replacementChar = 0xFFFC;
     CFRelease(pathRef);
     CFRelease(frameRef);
     CFRelease(framesetterRef);
-    UIGraphicsEndImageContext();
-    
+//    UIGraphicsEndImageContext();
 }
+
+//- (void)drawRect:(CGRect)rect
+//{
+//    [super drawRect:rect];
+//}
 
 /**
  绘制除了最后一行的行元素  一行一行的绘制,  方便处理 lineBreakMode,numberOfLines, 返回最后一行的角标
@@ -196,7 +237,7 @@ static unichar const replacementChar = 0xFFFC;
         (CTLineGetStringRange(lastLine).location+CTLineGetStringRange(lastLine).length == _attributeString.string.length))
     {
         CTLineDraw(lastLine, context);
-        [self storeRunRectAndDrawRunSelf:lastLine lineOrigin:lastLineOrigin];
+        [self storeRunRectAndDrawRunSelf:context lineRef:lastLine lineOrigin:lastLineOrigin];
     }else{
         
         CTLineBreakMode lineBreak = (CTLineBreakMode)self.lineBreakMode;
@@ -259,7 +300,7 @@ static unichar const replacementChar = 0xFFFC;
         
         CTLineDraw(lastLineSub, context);
         
-        [self storeRunRectAndDrawRunSelf:lastLineSub lineOrigin:lastLineOrigin];
+        [self storeRunRectAndDrawRunSelf:context lineRef:lastLineSub lineOrigin:lastLineOrigin];
         
         CFRelease(lastLineSub);
         CFRelease(paragraphStyle);
@@ -269,9 +310,8 @@ static unichar const replacementChar = 0xFFFC;
     
 }
 
-- (void)storeRunRectAndDrawRunSelf:(CTLineRef)lineRef lineOrigin:(CGPoint)lineOrigin
+- (void)storeRunRectAndDrawRunSelf:(CGContextRef)context lineRef:(CTLineRef)lineRef lineOrigin:(CGPoint)lineOrigin
 {
-    
     CGFloat lineAscent,lineDescent,lineLeading;
     CTLineGetTypographicBounds(lineRef, &lineAscent, &lineDescent, &lineLeading);
     CFArrayRef runs = CTLineGetGlyphRuns(lineRef);
@@ -293,7 +333,7 @@ static unichar const replacementChar = 0xFFFC;
         
         if (richTextRun && richTextRun.isDrawSelf) {
             
-            [richTextRun drawRunWithRect:runRect];
+            [richTextRun drawRunWithRect:runRect context:context];
             [self.runRectDictionary setObject:richTextRun forKey:[NSValue valueWithCGRect:runRect]];
             
         }else if (richTextRun){

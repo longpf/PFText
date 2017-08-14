@@ -33,7 +33,7 @@ NSString * const kPFTextAttributeName = @"kPFTextAttributeName";
     [attributedString addAttribute:kPFTextAttributeName value:self range:self.range];
 }
 
-- (void)drawRunWithRect:(CGRect)rect
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context
 {
     
 }

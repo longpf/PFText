@@ -49,12 +49,12 @@
     [super configRun:attributedString];
 }
 
-- (void)drawRunWithRect:(CGRect)rect
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context
 {
     if (_image) {
-        CGContextRef context = UIGraphicsGetCurrentContext();
+//        CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextDrawImage(context, rect, _image.CGImage);
-        UIGraphicsEndImageContext();
+//        UIGraphicsEndImageContext();
     }
 }
 

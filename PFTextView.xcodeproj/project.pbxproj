@@ -26,6 +26,7 @@
 		D3B335B51DD4C3B40063C5A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B335B31DD4C3B40063C5A1 /* LaunchScreen.storyboard */; };
 		D3B335C01DD4C3B40063C5A1 /* PFTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335BF1DD4C3B40063C5A1 /* PFTextViewTests.m */; };
 		D3B335CB1DD4C3B40063C5A1 /* PFTextViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335CA1DD4C3B40063C5A1 /* PFTextViewUITests.m */; };
+		D3C4F64E1F3C6C5A00E444F6 /* PFTextAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C4F64D1F3C6C5A00E444F6 /* PFTextAsyncLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		D3B335C61DD4C3B40063C5A1 /* PFTextViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PFTextViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B335CA1DD4C3B40063C5A1 /* PFTextViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PFTextViewUITests.m; sourceTree = "<group>"; };
 		D3B335CC1DD4C3B40063C5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3C4F64C1F3C6C5A00E444F6 /* PFTextAsyncLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextAsyncLayer.h; sourceTree = "<group>"; };
+		D3C4F64D1F3C6C5A00E444F6 /* PFTextAsyncLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextAsyncLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				D36D64C51E0108A6007B94B9 /* PFText.h */,
 				D319A9971DDD4CF90080AF51 /* PFTextView.h */,
 				D319A9981DDD4CF90080AF51 /* PFTextView.m */,
+				D3C4F64C1F3C6C5A00E444F6 /* PFTextAsyncLayer.h */,
+				D3C4F64D1F3C6C5A00E444F6 /* PFTextAsyncLayer.m */,
 				D319A9931DDD4CF90080AF51 /* PFTextRun.h */,
 				D319A9941DDD4CF90080AF51 /* PFTextRun.m */,
 				D319A9891DDD4CF90080AF51 /* PFTextAtRun.h */,
@@ -344,6 +349,7 @@
 				D319A99E1DDD4CF90080AF51 /* PFTextRun.m in Sources */,
 				D319A9991DDD4CF90080AF51 /* PFTextAtRun.m in Sources */,
 				D3B335AA1DD4C3B40063C5A1 /* AppDelegate.m in Sources */,
+				D3C4F64E1F3C6C5A00E444F6 /* PFTextAsyncLayer.m in Sources */,
 				D3B335A71DD4C3B40063C5A1 /* main.m in Sources */,
 				D319A99B1DDD4CF90080AF51 /* PFTextInternetImageRun.m in Sources */,
 				D319A99D1DDD4CF90080AF51 /* PFTextLocalImageRun.m in Sources */,

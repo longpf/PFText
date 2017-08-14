@@ -40,21 +40,21 @@
     
 }
 
-- (void)drawRunWithRect:(CGRect)rect
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context
 {
     if (_internetImage) {
         
-        CGContextRef context = UIGraphicsGetCurrentContext();
+//        CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextDrawImage(context, rect, _internetImage.CGImage);
-        UIGraphicsEndImageContext();
+//        UIGraphicsEndImageContext();
         
         return;
     }
     
     if (_placeholderImage) {
-        CGContextRef context = UIGraphicsGetCurrentContext();
+//        CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextDrawImage(context, rect, _placeholderImage.CGImage);
-        UIGraphicsEndImageContext();
+//        UIGraphicsEndImageContext();
     }
     
     //下载网络图片

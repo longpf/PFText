@@ -100,7 +100,7 @@ typedef NS_ENUM(NSInteger,PFTextRunWeight) {
  
  @param rect 绘制自己的区域
  */
-- (void)drawRunWithRect:(CGRect)rect;
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context;
 
 
 
