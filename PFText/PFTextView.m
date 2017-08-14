@@ -62,7 +62,7 @@ static unichar const replacementChar = 0xFFFC;
     _needHeightToFit = NO;
     PFTextAsyncLayer *layer = (PFTextAsyncLayer *)self.layer;
     layer.asyncLayerDelegate = self;
-    layer.displaysAsynchronously = YES;
+    layer.displaysAsynchronously = NO;
     //layer.drawsAsynchronously = YES;
     layer.contentsScale = [UIScreen mainScreen].scale;
     self.contentMode = UIViewContentModeRedraw;
@@ -73,9 +73,8 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)dealloc
 {
-//    NSLog(@"[PFTextView dealloc]");
+    NSLog(@"[PFTextView dealloc]");
 }
-
 
 + (Class)layerClass
 {
@@ -94,6 +93,7 @@ static unichar const replacementChar = 0xFFFC;
     if (isSuspended()) {
         return;
     }
+    
     [self _draw:context];
 }
 
@@ -131,18 +131,22 @@ static unichar const replacementChar = 0xFFFC;
     //配置 文本
     [self createAttributedString];
     
+    if (!self.attributeString) {
+        return;
+    }
+    
     //把特殊run的属性 写到 attString 里面
     __weak typeof(self) wself = self;
     for (int i = 0 ; i < self.runs.count ;i++) {
         
         PFTextRun *run = self.runs[i];
         
-        [run configRun:_attributeString];
+        [run configRun:self.attributeString];
         
         if (run.isDrawSelf) {
             //对需要自己绘制的进行空白符替换占位
             NSString *replacementString = [NSString stringWithCharacters:&replacementChar length:1];
-            [_attributeString replaceCharactersInRange:run.range withString:replacementString];
+            [self.attributeString replaceCharactersInRange:run.range withString:replacementString];
         }
         
         
@@ -169,7 +173,7 @@ static unichar const replacementChar = 0xFFFC;
     CGMutablePathRef pathRef = CGPathCreateMutable();
     CGPathAddRect(pathRef, NULL, self.bounds);
     
-    CTFramesetterRef framesetterRef = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributeString);
+    CTFramesetterRef framesetterRef = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.attributeString);
     CTFrameRef frameRef = CTFramesetterCreateFrame(framesetterRef, CFRangeMake(0, 0), pathRef, NULL);
     
     CFArrayRef lines = CTFrameGetLines(frameRef);
@@ -178,7 +182,13 @@ static unichar const replacementChar = 0xFFFC;
     CTFrameGetLineOrigins(frameRef, CFRangeMake(0, 0), lineOrigins);
     
     //绘制
-    unsigned long lastLineIndex = [self drawLineByLine:lines lineOrigins:lineOrigins context:context];
+    long lastLineIndex = [self drawLineByLine:lines lineOrigins:lineOrigins context:context];
+    if (lastLineIndex == -1) {
+        CFRelease(pathRef);
+        CFRelease(frameRef);
+        CFRelease(framesetterRef);
+        return;
+    }
     
     //将每一个的PFTextRun的rect储存起来
     for (int i = 0; i < CFArrayGetCount(lines); i++) {
@@ -213,10 +223,11 @@ static unichar const replacementChar = 0xFFFC;
  @param lineOrigins 每行的起点
  @param context     绘制上下文
  
- @return 返回最后一行的角标
+ @return 返回最后一行的角标,-1表示有错误
  */
-- (unsigned long)drawLineByLine:(CFArrayRef)lines lineOrigins:(CGPoint *)lineOrigins context:(CGContextRef)context;
+- (long)drawLineByLine:(CFArrayRef)lines lineOrigins:(CGPoint *)lineOrigins context:(CGContextRef)context;
 {
+
     
     unsigned long lineCount = CFArrayGetCount(lines);
     
@@ -236,8 +247,12 @@ static unichar const replacementChar = 0xFFFC;
     
     CTLineRef lastLine = CFArrayGetValueAtIndex(lines, lastIndex);
     
+    if (!self.attributeString) {
+        return -1;
+    }
+    
     if ((self.lineBreakMode != NSLineBreakByTruncatingHead && self.lineBreakMode != NSLineBreakByTruncatingTail && self.lineBreakMode != NSLineBreakByTruncatingMiddle) ||
-        (CTLineGetStringRange(lastLine).location+CTLineGetStringRange(lastLine).length == _attributeString.string.length))
+        (CTLineGetStringRange(lastLine).location+CTLineGetStringRange(lastLine).length == self.attributeString.string.length))
     {
         CTLineDraw(lastLine, context);
         [self storeRunRectAndDrawRunSelf:context lineRef:lastLine lineOrigin:lastLineOrigin];
@@ -267,7 +282,7 @@ static unichar const replacementChar = 0xFFFC;
         CTParagraphStyleSetting settings[] = {lineBreakStyle,firstLineHeadIndent,headIndent,tailIndent};
         CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, 4);
         
-        CFAttributedStringSetAttribute((CFMutableAttributedStringRef)_attributeString, CFRangeMake(CTLineGetStringRange(lastLine).location, CTLineGetStringRange(lastLine).length), kCTParagraphStyleAttributeName, paragraphStyle);
+        CFAttributedStringSetAttribute((CFMutableAttributedStringRef)self.attributeString, CFRangeMake(CTLineGetStringRange(lastLine).location, CTLineGetStringRange(lastLine).length), kCTParagraphStyleAttributeName, paragraphStyle);
         
         //省略号
         static NSString* const kEllipsesCharacter = @"\u2026";
@@ -277,7 +292,7 @@ static unichar const replacementChar = 0xFFFC;
         NSInteger lastLineLength = CTLineGetStringRange(lastLine).length;;
         
         //最后一行的字符串
-        NSMutableAttributedString *subAttributedString = [[_attributeString attributedSubstringFromRange:NSMakeRange(lastLineLocation, lastLineLength)] mutableCopy];
+        NSMutableAttributedString *subAttributedString = [[self.attributeString attributedSubstringFromRange:NSMakeRange(lastLineLocation, lastLineLength)] mutableCopy];
         
         NSInteger insertCharacterLocation = lastLineLength - 1;
         
@@ -352,12 +367,16 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)createAttributedString
 {
-    _attributeString = [[NSMutableAttributedString alloc] initWithString:self.text];
+    self.attributeString = [[NSMutableAttributedString alloc] initWithString:self.text attributes:@{}];
+    
+    if (!self.attributeString) {
+        return;
+    }
     
     CTFontRef fontRef = CTFontCreateWithName((CFStringRef)[self.font fontName], [self.font pointSize], &CGAffineTransformIdentity);
-    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)_attributeString, CFRangeMake(0, _attributeString.string.length), kCTFontAttributeName, fontRef);
+    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)self.attributeString, CFRangeMake(0, self.attributeString.string.length), kCTFontAttributeName, fontRef);
     
-    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)_attributeString, CFRangeMake(0, _attributeString.string.length), kCTForegroundColorAttributeName, self.textColor.CGColor);
+    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)self.attributeString, CFRangeMake(0, self.attributeString.string.length), kCTForegroundColorAttributeName, self.textColor.CGColor);
     
     
     static NSDictionary *alignments;
@@ -414,12 +433,12 @@ static unichar const replacementChar = 0xFFFC;
     }
     
     
-    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)_attributeString, CFRangeMake(0, _attributeString.string.length), kCTParagraphStyleAttributeName, paragraphStyle);
+    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)self.attributeString, CFRangeMake(0, self.attributeString.string.length), kCTParagraphStyleAttributeName, paragraphStyle);
     
     CFRelease(paragraphStyle);
     
-    if (_attributeString.string.length > 0) {
-        self.universalAttributes = [_attributeString attributesAtIndex:0 effectiveRange:NULL];
+    if (self.attributeString.string.length > 0) {
+        self.universalAttributes = [self.attributeString attributesAtIndex:0 effectiveRange:NULL];
     }
 }
 
@@ -466,18 +485,18 @@ static unichar const replacementChar = 0xFFFC;
     
     for (int i = 0; i < self.runs.count; i++) {
         PFTextRun *run = self.runs[i];
-        [run configRun:_attributeString];
+        [run configRun:self.attributeString];
         if (run.isDrawSelf) {
             //对需要自己绘制的进行空白符替换占位
             NSString *replacementString = [NSString stringWithCharacters:&replacementChar length:1];
-            [_attributeString replaceCharactersInRange:run.range withString:replacementString];
+            [self.attributeString replaceCharactersInRange:run.range withString:replacementString];
         }
     }
     
     CGMutablePathRef pathRef = CGPathCreateMutable();
     CGPathAddRect(pathRef, NULL, CGRectMake(0, 0, width, MAXFLOAT));
     
-    CTFramesetterRef framesetterRef = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_attributeString);
+    CTFramesetterRef framesetterRef = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self.attributeString);
     CTFrameRef frameRef = CTFramesetterCreateFrame(framesetterRef, CFRangeMake(0, 0), pathRef, NULL);
     
     CFArrayRef lines = CTFrameGetLines(frameRef);
@@ -725,7 +744,7 @@ static unichar const replacementChar = 0xFFFC;
 {
     if (_text != text) {
         _text = text;
-        _attributeString = nil;
+        self.attributeString = nil;
         [self.runs removeAllObjects];
         [self.layer setNeedsDisplay];
     }
@@ -788,6 +807,14 @@ static unichar const replacementChar = 0xFFFC;
         layer.displaysAsynchronously = displaysAsynchronously;
         [self.layer setNeedsDisplay];
     }
+}
+
+- (NSMutableAttributedString *)attributeString
+{
+    if (!_attributeString) {
+        _attributeString = [[NSMutableAttributedString alloc] initWithString:self.text?:@""];
+    }
+    return _attributeString;
 }
 
 @end

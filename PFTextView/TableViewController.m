@@ -36,6 +36,7 @@ static BOOL async = YES;
     
     self.dataArray = [NSMutableArray array];
     [self.tableView registerClass:[TableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView.rowHeight = 88;
     for (int i = 0; i < 500; i++) {
         [self.dataArray addObject:[NSString stringWithFormat:@"%@-%@",@(i).stringValue,@"🙈🙉🙊🐒🍔🍟🌭🍕⚾️🏈🏓🤺🤼‍♀️🚋🚄🚈⌚️📱📲😁😆🙄👌😎😁🤡🤠😡😠😟😞😳😔☹️🤔🤗😎🤓🤑😝😜😙🤣😇😅😂🀀🀄︎🀁🀂🀡🀗🀘🀢🀣🀤🀩🀨🀥🀦🀧🀝🀓🀀🤑🦄🐝🐛🦋🐌🐞🐸🐽🐷🐹🐵🐗🐨🐶🐱🐭🐮🦁🐯🙈🙉🙊🐒🍔🍟🌭🍕⚾️🏈🏓🤺🤼‍♀️🚋🚄🚈⌚️📱📲"]];
     }
@@ -60,6 +61,7 @@ static BOOL async = YES;
 
 - (void)backAction:(UIButton *)button
 {
+    async = YES;
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

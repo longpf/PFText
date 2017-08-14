@@ -100,6 +100,9 @@
  */
 - (void)heightToFit;
 
+/**
+ 是否需要异步绘制文本能容，默认为NO，如果是对流畅度比较高的视图简易开启，比如有某些tableView
+ */
 @property (nonatomic, assign) BOOL displaysAsynchronously;
 
 @end
