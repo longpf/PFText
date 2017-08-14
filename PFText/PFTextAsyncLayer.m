@@ -163,7 +163,7 @@ static dispatch_queue_t _pf_textlayerReleaseQueue(){
             }
             
             if ([delegate respondsToSelector:@selector(layerDispaly:size:isSuspended:)]) {
-                [delegate layerDispaly:context size:CGSizeZero isSuspended:isSuspended];
+                [delegate layerDispaly:context size:size isSuspended:isSuspended];
             }
             if (isSuspended()) {
                 UIGraphicsEndImageContext();
@@ -200,7 +200,44 @@ static dispatch_queue_t _pf_textlayerReleaseQueue(){
         });
         
     }
-    
+    else{
+        [sentiel increase];
+        if ([delegate respondsToSelector:@selector(layerWillDisplay:)]) {
+            [delegate layerWillDisplay:self];
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, self.contentsScale);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        CGColorRef backgroundColor = (self.opaque && self.backgroundColor) ? CGColorRetain(self.backgroundColor) : NULL;
+        if (self.opaque && context) {
+            CGContextSaveGState(context);
+            if (!backgroundColor || CGColorGetAlpha(backgroundColor) < 1) {
+                CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+                CGContextAddRect(context, CGRectMake(0, 0, self.bounds.size.width * self.contentsScale, self.bounds.size.height * self.contentsScale));
+                CGContextFillPath(context);
+            }
+            if (backgroundColor) {
+                CGContextSetFillColorWithColor(context, backgroundColor);
+                CGContextAddRect(context, CGRectMake(0, 0, self.bounds.size.width * self.contentsScale, self.bounds.size.height * self.contentsScale));
+                CGContextFillPath(context);
+            }
+            CGContextRestoreGState(context);
+            CGColorRelease(backgroundColor);
+        }
+        if ([delegate respondsToSelector:@selector(layerDispaly:size:isSuspended:)]) {
+            BOOL (^isSuspended)() = ^BOOL() {
+                return NO;
+            };
+            [delegate layerDispaly:context size:self.bounds.size isSuspended:isSuspended];
+        }
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.contents = (__bridge id)(image.CGImage);
+        if ([delegate respondsToSelector:@selector(layerDisplayCompletion:finish:)]) {
+            [delegate layerDisplayCompletion:self finish:YES];
+        }
+    }
 }
 
 - (void)_cancelAsyncDisplay {

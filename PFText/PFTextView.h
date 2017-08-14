@@ -100,4 +100,6 @@
  */
 - (void)heightToFit;
 
+@property (nonatomic, assign) BOOL displaysAsynchronously;
+
 @end

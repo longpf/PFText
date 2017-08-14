@@ -76,10 +76,6 @@ static unichar const replacementChar = 0xFFFC;
 //    NSLog(@"[PFTextView dealloc]");
 }
 
-- (void)setNeedsDisplay
-{
-    [super setNeedsDisplay];
-}
 
 + (Class)layerClass
 {
@@ -88,7 +84,7 @@ static unichar const replacementChar = 0xFFFC;
 
 #pragma mark - PFTextAsyncLayerDelegate
 
-- (void)layerWillDraw:(CALayer *)layer
+- (void)layerWillDisplay:(PFTextAsyncLayer *)layer
 {
     
 }
@@ -710,36 +706,36 @@ static unichar const replacementChar = 0xFFFC;
 - (void)setSettingRuns:(NSArray<PFTextRun *> *)settingRuns
 {
     if (_settingRuns != settingRuns) {
-        [self setNeedsDisplay];
         _settingRuns = settingRuns;
         [self.runs removeAllObjects];
+        [self.layer setNeedsDisplay];
     }
 }
 
 - (void)setLineSpacing:(CGFloat)lineSpacing
 {
     if (_lineSpacing != lineSpacing) {
-        [self setNeedsDisplay];
         _lineSpacing = lineSpacing;
         [_runRectDictionary removeAllObjects];
+        [self.layer setNeedsDisplay];
     }
 }
 
 - (void)setText:(NSString *)text
 {
     if (_text != text) {
-        [self setNeedsDisplay];
         _text = text;
         _attributeString = nil;
         [self.runs removeAllObjects];
+        [self.layer setNeedsDisplay];
     }
 }
 
 - (void)setFont:(UIFont *)font
 {
     if (_font != font) {
-        [self setNeedsDisplay];
         _font = font;
+        [self.layer setNeedsDisplay];
     }
     
 }
@@ -747,40 +743,50 @@ static unichar const replacementChar = 0xFFFC;
 - (void)setTextColor:(UIColor *)textColor
 {
     if (textColor != _textColor) {
-        [self setNeedsDisplay];
         _textColor = textColor;
+        [self.layer setNeedsDisplay];
     }
 }
 
 - (void)setParagraphHeadIndent:(CGFloat)paragraphHeadIndent
 {
     if (_paragraphHeadIndent != paragraphHeadIndent) {
-        [self setNeedsDisplay];
         _paragraphHeadIndent = paragraphHeadIndent;
+        [self.layer setNeedsDisplay];
     }
 }
 
 - (void)setParagraphTailIndent:(CGFloat)paragraphTailIndent
 {
     if (_paragraphTailIndent != paragraphTailIndent) {
-        [self setNeedsDisplay];
         _paragraphTailIndent = paragraphTailIndent;
+        [self.layer setNeedsDisplay];
     }
 }
 
 - (void)setFirstLineHeadIndent:(CGFloat)firstLineHeadIndent
 {
     if (_firstLineHeadIndent != firstLineHeadIndent) {
-        [self setNeedsDisplay];
         _firstLineHeadIndent = firstLineHeadIndent;
+        [self.layer setNeedsDisplay];
     }
 }
 
 - (void)setNumberOfLines:(NSInteger)numberOfLines
 {
     if (_numberOfLines != numberOfLines) {
-        [self setNeedsDisplay];
         _numberOfLines = numberOfLines;
+        [self.layer setNeedsDisplay];
+    }
+}
+
+- (void)setDisplaysAsynchronously:(BOOL)displaysAsynchronously
+{
+    if (_displaysAsynchronously != displaysAsynchronously) {
+        _displaysAsynchronously = displaysAsynchronously;
+        PFTextAsyncLayer *layer = (PFTextAsyncLayer *)self.layer;
+        layer.displaysAsynchronously = displaysAsynchronously;
+        [self.layer setNeedsDisplay];
     }
 }
 

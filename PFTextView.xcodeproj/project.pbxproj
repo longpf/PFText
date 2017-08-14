@@ -27,6 +27,7 @@
 		D3B335C01DD4C3B40063C5A1 /* PFTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335BF1DD4C3B40063C5A1 /* PFTextViewTests.m */; };
 		D3B335CB1DD4C3B40063C5A1 /* PFTextViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B335CA1DD4C3B40063C5A1 /* PFTextViewUITests.m */; };
 		D3C4F64E1F3C6C5A00E444F6 /* PFTextAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C4F64D1F3C6C5A00E444F6 /* PFTextAsyncLayer.m */; };
+		D3C4F6991F41913C00E444F6 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C4F6981F41913B00E444F6 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		D3B335CC1DD4C3B40063C5A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3C4F64C1F3C6C5A00E444F6 /* PFTextAsyncLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFTextAsyncLayer.h; sourceTree = "<group>"; };
 		D3C4F64D1F3C6C5A00E444F6 /* PFTextAsyncLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFTextAsyncLayer.m; sourceTree = "<group>"; };
+		D3C4F6971F41913B00E444F6 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		D3C4F6981F41913B00E444F6 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +172,8 @@
 				D3B335A91DD4C3B40063C5A1 /* AppDelegate.m */,
 				D3B335AB1DD4C3B40063C5A1 /* ViewController.h */,
 				D3B335AC1DD4C3B40063C5A1 /* ViewController.m */,
+				D3C4F6971F41913B00E444F6 /* TableViewController.h */,
+				D3C4F6981F41913B00E444F6 /* TableViewController.m */,
 				D36D64C31DFE925F007B94B9 /* penguin.png */,
 				D33D75231DD55E0100909226 /* default.png */,
 				D3B335AE1DD4C3B40063C5A1 /* Main.storyboard */,
@@ -347,6 +352,7 @@
 				D319A9A01DDD4CF90080AF51 /* PFTextView.m in Sources */,
 				D319A99A1DDD4CF90080AF51 /* PFTextDownloader.m in Sources */,
 				D319A99E1DDD4CF90080AF51 /* PFTextRun.m in Sources */,
+				D3C4F6991F41913C00E444F6 /* TableViewController.m in Sources */,
 				D319A9991DDD4CF90080AF51 /* PFTextAtRun.m in Sources */,
 				D3B335AA1DD4C3B40063C5A1 /* AppDelegate.m in Sources */,
 				D3C4F64E1F3C6C5A00E444F6 /* PFTextAsyncLayer.m in Sources */,

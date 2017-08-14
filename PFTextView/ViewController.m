@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "TableViewController.h"
 #import "PFText.h"
 
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
@@ -26,7 +27,7 @@
     
     PFTextView *textView = [[PFTextView alloc]initWithFrame:CGRectMake(0, 100, SCREEN_SIZE.width, 350)];
     
-    textView.text = @"PFText是一个轻量级的coretext富文本展示和编辑工具。一些基本设置可参见#PFTextView.h#,其他已经实现了@nick,#tag#,linkhttps://github.com/LongPF/PFText的识别、点击操作。本地图片`penguin.png`，网络图片``http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg``。自适应高度，粘贴板功能。注：可根据需要复写#PFTextRun#，根据特定的正则和特定的基本设置定制";
+    textView.text = @"PFText是一个轻量级的coretext富文本展示和编辑工具。一些基本设置可参见#PFTextView.h#,其他已经实现了@nick,#tag#,linkhttps://github.com/LongPF/PFText的识别、点击操作。本地图片`penguin.png`，网络图片``http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg``。自适应高度，粘贴板功能。注：可根据需要复写#PFTextRun#，根据特定的正则和特定的基本设置定制。\n新版本增加了#异步绘制#功能，可用于对流畅度比较高的视图";
     
     
     textView.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -34,7 +35,7 @@
     textView.firstLineHeadIndent = 30;
     textView.paragraphHeadIndent = 10;
     textView.paragraphTailIndent = -10;
-    textView.numberOfLines = 7;
+    textView.numberOfLines = 0;
     textView.font = [UIFont systemFontOfSize:14];
     textView.delegate = self;
     textView.disableMenuController = YES;
@@ -87,6 +88,14 @@
 {
     NSLog(@"touchEnd %@ = %@ ",[run class],run);
     self.logLabel.text = [NSString stringWithFormat:@"%@%@  -\n          %@",@"   log : ",[run class],run];
+    
+    
+    
+    if ([run isKindOfClass:[PFTextTagRun class]] && [run.text isEqualToString:@"#异步绘制#"]) {
+        TableViewController *con = [TableViewController new];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:con];
+        [self presentViewController:nav animated:YES completion:nil];
+    }
 }
 
 - (void)textView:(PFTextView *)view touchEnded:(UIEvent *)event
