@@ -22,11 +22,11 @@ static dispatch_queue_t _pf_textLayerDsipalyerQueue(){
         if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
             for (NSUInteger i = 0; i < queueCount; i++) {
                 dispatch_queue_attr_t attr = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, 0);
-                queues[i] = dispatch_queue_create("com.ibireme.text.render", attr);
+                queues[i] = dispatch_queue_create("pftext.pftextasynclayer", attr);
             }
         } else {
             for (NSUInteger i = 0; i < queueCount; i++) {
-                queues[i] = dispatch_queue_create("com.ibireme.text.render", DISPATCH_QUEUE_SERIAL);
+                queues[i] = dispatch_queue_create("pftext.pftextasynclayer", DISPATCH_QUEUE_SERIAL);
                 dispatch_set_target_queue(queues[i], dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
             }
         }
@@ -35,6 +35,10 @@ static dispatch_queue_t _pf_textLayerDsipalyerQueue(){
     atomic_int cur = atomic_fetch_add_explicit(&counter,1,memory_order_relaxed);
     return queues[(cur)%queueCount];
 #undef _PF_DISPLAY_MAX_QUEUE
+}
+
+static dispatch_queue_t _pf_textlayerReleaseQueue(){
+    return dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0);
 }
 
 @interface _PFTextSentinel : NSObject
