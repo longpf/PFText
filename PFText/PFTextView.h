@@ -29,9 +29,10 @@
 @property (nonatomic, strong) UIFont *font;
 
 /**
- 关闭UIMenuController功能
+ 开启UIMenuController功能, **注意： 请确认PFTextView所在的UIViewController没有与inputView同名的属性，
+ 有的话请换个属性名字，否则可能出错
  **/
-@property (nonatomic, assign) BOOL disableMenuController;
+@property (nonatomic, assign) BOOL enableMenuController;
 
 /**
  设置文本的样式,可以根据需要自定义 PFTextRun 添加到数组中. 例如:

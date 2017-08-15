@@ -20,6 +20,8 @@ static unichar const replacementChar = 0xFFFC;
 @property (nonatomic, strong) NSDictionary *universalAttributes; //加在整个text上的属性
 @property (nonatomic, assign) BOOL needHeightToFit;
 @property (nonatomic, assign) PFTextRun *longPressRun;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPress;
+@property (nonatomic, assign) BOOL __hasIssue;
 
 @end
 
@@ -66,9 +68,7 @@ static unichar const replacementChar = 0xFFFC;
     //layer.drawsAsynchronously = YES;
     layer.contentsScale = [UIScreen mainScreen].scale;
     self.contentMode = UIViewContentModeRedraw;
-    
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressHandler:)];
-    [self addGestureRecognizer:longPress];
+
 }
 
 - (void)dealloc
@@ -530,11 +530,35 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)longPressHandler:(UILongPressGestureRecognizer *)longPress
 {
-    if (self.disableMenuController) {
+    if (!self.enableMenuController) {
         return;
     }
     
-    [self becomeFirstResponder];
+    if (self.__hasIssue) {
+#ifdef DEBUG
+        NSAssert(NO, @"注意： 请确认PFTextView所在的UIViewController没有与inputView同名的属性，有的话请换个属性名字，否则可能出错");
+#endif
+        return;
+    }
+    
+    @try {
+        
+        [self becomeFirstResponder];
+        
+    } @catch (NSException *exception) {
+        
+        self.__hasIssue = YES;
+        
+    } @finally {
+        
+    }
+    
+    if (self.__hasIssue) {
+#ifdef DEBUG
+        NSAssert(NO, @"注意： 请确认PFTextView所在的UIViewController没有与inputView同名的属性，有的话请换个属性名字，否则可能出错");
+#endif
+        return;
+    }
 
     __block PFTextRun *targetRun = nil;
     __block CGRect targetRect = CGRectZero;
@@ -807,6 +831,30 @@ static unichar const replacementChar = 0xFFFC;
         layer.displaysAsynchronously = displaysAsynchronously;
         [self.layer setNeedsDisplay];
     }
+}
+
+- (void)setEnableMenuController:(BOOL)enableMenuController
+{
+    if (_enableMenuController != enableMenuController) {
+        _enableMenuController = enableMenuController;
+        if (enableMenuController) {
+            if (![self.gestureRecognizers containsObject:self.longPress]) {
+                [self addGestureRecognizer:self.longPress];
+            }
+        }else{
+            if ([self.gestureRecognizers containsObject:self.longPress]) {
+                [self removeGestureRecognizer:self.longPress];
+            }
+        }
+    }
+}
+
+- (UILongPressGestureRecognizer *)longPress
+{
+    if (!_longPress) {
+        _longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressHandler:)];
+    }
+    return _longPress;
 }
 
 - (NSMutableAttributedString *)attributeString
