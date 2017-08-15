@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "PFText"
-  s.version      = "1.0.3"
+  s.version      = "2.0.0"
   s.summary      = "富文本,coretext"
   s.description  = <<-DESC
-                  富文本,支持@nick,link,本地图片,网络图片,粘贴板,自定义规则
+                  异步绘制,富文本,支持@nick,link,本地图片,网络图片,粘贴板,自定义规则
                    DESC
   s.homepage     = "https://github.com/LongPF/PFText"
   s.platform     = :ios, '7.0'

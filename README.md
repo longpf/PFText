@@ -10,7 +10,7 @@ PFText
 
 特点
 ==============
-可以**自定义**筛选规则而不需要操作coretext代码
+可以**自定义**筛选规则而不需要操作coretext代码，2.0.0版本增加异步绘制的功能，对一些流畅度要求比较高的视图有比较好的效果
 
 一些属性和方法介绍
 ==============
@@ -31,6 +31,8 @@ paragraphTailIndent   | 段落尾缩进,值应该为负值
 firstLineHeadIndent   | 首行缩进
 **heightThatFit:**    | 获取一个最适合的高度,不会改变自身的高度
 **heightToFit**  	  | 该方法会调用heightThatFit:,传入width = self.bounds.size.width, 该方法会改变自身的高度
+**enableMenuController**    | 开启UIMenuController功能, 注意： 请确认PFTextView所在的UIViewController没有与inputView同名的属性，有的话请换个属性名字，否则可能出错
+**displaysAsynchronously**  	  | 是否需要异步绘制文本能容，默认为NO，如果是对流畅度比较高的视图简易开启，比如有某些tableView
 
 安装
 ==============
@@ -50,6 +52,7 @@ firstLineHeadIndent   | 首行缩进
 * 网络图片
 * 点击事件
 * 粘贴板
+* 异步绘制
 
 效果
 ==============
