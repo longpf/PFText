@@ -32,6 +32,8 @@
             atRun.text = matchString;
             atRun.font = self.font;
             atRun.textColor = self.textColor;
+            atRun.offsetX = self.offsetX;
+            atRun.offsetY = self.offsetY;
             [runArray addObject:atRun];
             
         }

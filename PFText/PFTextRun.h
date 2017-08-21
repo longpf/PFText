@@ -80,6 +80,16 @@ typedef NS_ENUM(NSInteger,PFTextRunWeight) {
 @property (nonatomic, copy) UIImage *pasteImage;
 
 /**
+ y偏移
+ */
+@property (nonatomic, assign) CGFloat offsetY;
+
+/**
+ x偏移
+ */
+@property (nonatomic, assign) CGFloat offsetX;
+
+/**
  *  @brief 设置run 替换图片为字符等操作,子类根据需要重写
  *
  *  @param attributedString 需要绘制的文本

@@ -58,6 +58,7 @@
     // 本地图片
     PFTextLocalImageRun *localImageRun = [PFTextLocalImageRun new];
     localImageRun.defaultSize = CGSizeMake(30, 30);
+    localImageRun.offsetY = 10;
     
     // 网络图片
     PFTextInternetImageRun *internetImageRun = [PFTextInternetImageRun new];

@@ -33,6 +33,8 @@
             if (urlString) run.imageUrl = [NSURL URLWithString:urlString];
             run.range = match.range;
             run.defaultSize = self.defaultSize;
+            run.offsetX = self.offsetX;
+            run.offsetY = self.offsetY;
             [runArray addObject:run];
         }
         

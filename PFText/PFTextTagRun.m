@@ -26,6 +26,8 @@
             run.range = match.range;
             run.textColor = self.textColor;
             run.font = self.font;
+            run.offsetX = self.offsetX;
+            run.offsetY = self.offsetY;
             [runArray addObject:run];
         }
     }

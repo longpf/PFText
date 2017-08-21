@@ -340,17 +340,17 @@ static unichar const replacementChar = 0xFFFC;
         CGFloat runAscent, runDescent;
         CGRect runRect;
         
-        runRect = CGRectMake(lineOrigin.x+CTLineGetOffsetForStringIndex(lineRef,
-                                                                        CTRunGetStringRange(runRef).location, NULL),
-                             lineOrigin.y,
-                             CTRunGetTypographicBounds(runRef, CFRangeMake(0, 0), &runAscent,&runDescent, NULL),
-                             runAscent+runDescent);
-        
         NSDictionary *attributes = (__bridge NSDictionary *)CTRunGetAttributes(runRef);
         PFTextRun *richTextRun = [attributes objectForKey:kPFTextAttributeName];
         
+        runRect = CGRectMake(richTextRun.offsetX + lineOrigin.x+CTLineGetOffsetForStringIndex(lineRef,
+                                                                        CTRunGetStringRange(runRef).location, NULL),
+                             -richTextRun.offsetY + lineOrigin.y,
+                             CTRunGetTypographicBounds(runRef, CFRangeMake(0, 0), &runAscent,&runDescent, NULL),
+                             runAscent+runDescent);
+        
+        
         if (richTextRun && richTextRun.isDrawSelf) {
-            
             [richTextRun drawRunWithRect:runRect context:context];
             [self.runRectDictionary setObject:richTextRun forKey:[NSValue valueWithCGRect:runRect]];
             

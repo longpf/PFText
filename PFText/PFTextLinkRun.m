@@ -26,12 +26,14 @@
         
         if (runArray) {
             
-            PFTextLinkRun *atRun = [[PFTextLinkRun alloc]init];
-            atRun.range = match.range;
-            atRun.text = matchString;
-            atRun.font = self.font;
-            atRun.textColor = self.textColor;
-            [runArray addObject:atRun];
+            PFTextLinkRun *run = [[PFTextLinkRun alloc]init];
+            run.range = match.range;
+            run.text = matchString;
+            run.font = self.font;
+            run.textColor = self.textColor;
+            run.offsetX = self.offsetX;
+            run.offsetY = self.offsetY;
+            [runArray addObject:run];
         }
     }
     
