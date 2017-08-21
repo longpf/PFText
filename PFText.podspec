@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "PFText"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "富文本,coretext"
   s.description  = <<-DESC
                   异步绘制,富文本,支持@nick,link,本地图片,网络图片,粘贴板,自定义规则
