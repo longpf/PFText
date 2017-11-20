@@ -30,7 +30,13 @@ NSString * const kPFTextAttributeName = @"kPFTextAttributeName";
 
 - (void)configRun:(NSMutableAttributedString *)attributedString
 {
-    [attributedString addAttribute:kPFTextAttributeName value:self range:self.range];
+    if (attributedString.string.length)
+    {
+        if ((self.range.location+self.range.length)<=attributedString.string.length)
+        {
+            [attributedString addAttribute:kPFTextAttributeName value:self range:self.range];
+        }
+    }
 }
 
 - (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context
