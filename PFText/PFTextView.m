@@ -73,7 +73,7 @@ static unichar const replacementChar = 0xFFFC;
 
 - (void)dealloc
 {
-    NSLog(@"[PFTextView dealloc]");
+//    NSLog(@"[PFTextView dealloc]");
 }
 
 + (Class)layerClass

@@ -114,7 +114,7 @@
         
         __weak typeof(self) wself = self;
         [PFDownloader pf_downloadTaskWithURL:self.imageUrl downloadProgress:^(int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite, double progress) {
-            NSLog(@"图片下载进度:%f",progress);
+//            NSLog(@"图片下载进度:%f",progress);
         } completeHandler:^(NSURLSession *session, NSURLSessionTask *task, NSURL *filePath) {
             
             __strong typeof(wself) sself = wself;
@@ -129,7 +129,7 @@
             }
             
         } errorHandler:^(NSURLSession *session, NSURLSessionTask *task, NSError *error) {
-            NSLog(@"图片下载失败:%@",error);
+//            NSLog(@"图片下载失败:%@",error);
         }];
         
     }
