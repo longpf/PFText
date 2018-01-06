@@ -92,7 +92,15 @@
             return [UIImage pf_animatedGIFWithData:data];
         }
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
+        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
+        
+        data = [NSData dataWithContentsOfFile:path];
+        
+        if (data) {
+            return [UIImage pf_animatedGIFWithData:data];
+        }
+        
+        path = [[NSBundle mainBundle] pathForResource:name ofType:@""];
         
         data = [NSData dataWithContentsOfFile:path];
         

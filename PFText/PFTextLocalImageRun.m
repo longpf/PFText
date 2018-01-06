@@ -73,6 +73,9 @@
             gifAni.duration = _image.duration;
             [gifAni setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
             gifAni.repeatCount = MAXFLOAT;
+            gifAni.fillMode = kCAFillModeBoth;
+            gifAni.delegate = self;
+            gifAni.removedOnCompletion = NO;
             [layer addAnimation:gifAni forKey:@"gifAni"];
             for (int i = 0; i < source.count; i++) {
                 CFTypeRef image = (__bridge CFTypeRef)source[i];
@@ -85,7 +88,6 @@
         }
     }
 }
-
 
 #pragma mark - run call back
 
