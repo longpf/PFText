@@ -39,7 +39,7 @@ NSString * const kPFTextAttributeName = @"kPFTextAttributeName";
     }
 }
 
-- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context textView:(UIView *)textView
 {
     
 }

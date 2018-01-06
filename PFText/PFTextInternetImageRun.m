@@ -8,6 +8,7 @@
 
 #import "PFTextInternetImageRun.h"
 #import "PFTextDownloader.h"
+#import "UIImage+PFGIF.h"
 
 @implementation PFTextInternetImageRun
 
@@ -42,21 +43,69 @@
     
 }
 
-- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context textView:(UIView *)textView
 {
     if (_internetImage) {
-        
-//        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextDrawImage(context, rect, _internetImage.CGImage);
-//        UIGraphicsEndImageContext();
-        
+        if (_internetImage._isGIF)
+        {
+            //由于coretext进行过坐标转化,这里添加layer的话rect需要变换下
+            CGRect drawRect = CGRectMake(rect.origin.x, CGRectGetHeight(textView.bounds)-rect.origin.y-rect.size.height, rect.size.width, rect.size.height);
+            CALayer *layer = [[CALayer alloc] init];
+            layer.frame = drawRect;
+            [textView.layer addSublayer:layer];
+            NSMutableArray *source = [NSMutableArray array];
+            for (int i = 0; i < _internetImage.images.count; i++) {
+                UIImage *image = _internetImage.images[i];
+                //用CFBridgingRelease会有内存错误crash
+                [source addObject:CFRetain(image.CGImage)];
+            }
+            CAKeyframeAnimation *gifAni = [CAKeyframeAnimation animationWithKeyPath:@"contents"];
+            [gifAni setValues:source];
+            gifAni.duration = _internetImage.duration;
+            [gifAni setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+            gifAni.repeatCount = MAXFLOAT;
+            [layer addAnimation:gifAni forKey:@"gifAni"];
+            for (int i = 0; i < source.count; i++) {
+                CFTypeRef image = (__bridge CFTypeRef)source[i];
+                CFRelease(image);
+            }
+        }
+        else
+        {
+            CGContextDrawImage(context, rect, _internetImage.CGImage);
+        }
         return;
     }
     
     if (_placeholderImage) {
-//        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextDrawImage(context, rect, _placeholderImage.CGImage);
-//        UIGraphicsEndImageContext();
+        if (_placeholderImage._isGIF)
+        {
+            //由于coretext进行过坐标转化,这里添加layer的话rect需要变换下
+            CGRect drawRect = CGRectMake(rect.origin.x, CGRectGetHeight(textView.bounds)-rect.origin.y-rect.size.height, rect.size.width, rect.size.height);
+            CALayer *layer = [[CALayer alloc] init];
+            layer.frame = drawRect;
+            [textView.layer addSublayer:layer];
+            NSMutableArray *source = [NSMutableArray array];
+            for (int i = 0; i < _placeholderImage.images.count; i++) {
+                UIImage *image = _placeholderImage.images[i];
+                //用CFBridgingRelease会有内存错误crash
+                [source addObject:CFRetain(image.CGImage)];
+            }
+            CAKeyframeAnimation *gifAni = [CAKeyframeAnimation animationWithKeyPath:@"contents"];
+            [gifAni setValues:source];
+            gifAni.duration = _placeholderImage.duration;
+            [gifAni setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+            gifAni.repeatCount = MAXFLOAT;
+            [layer addAnimation:gifAni forKey:@"gifAni"];
+            for (int i = 0; i < source.count; i++) {
+                CFTypeRef image = (__bridge CFTypeRef)source[i];
+                CFRelease(image);
+            }
+        }
+        else
+        {
+            CGContextDrawImage(context, rect, _placeholderImage.CGImage);
+        }
     }
     
     //下载网络图片
@@ -69,7 +118,8 @@
             
             __strong typeof(wself) sself = wself;
             //            UIImage *image = [UIImage imageWithContentsOfFile:[filePath relativePath]];
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:filePath]];
+//            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:filePath]];
+            UIImage *image = [UIImage pf_animatedGIFWithData:[NSData dataWithContentsOfURL:filePath]];
             if (image) {
                 sself.internetImage = image;
                 if (sself.needDisplay) {
@@ -138,6 +188,7 @@
     
     return width;
 }
+
 
 
 @end

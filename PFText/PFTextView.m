@@ -351,7 +351,7 @@ static unichar const replacementChar = 0xFFFC;
         
         
         if (richTextRun && richTextRun.isDrawSelf) {
-            [richTextRun drawRunWithRect:runRect context:context];
+            [richTextRun drawRunWithRect:runRect context:context textView:self];
             [self.runRectDictionary setObject:richTextRun forKey:[NSValue valueWithCGRect:runRect]];
             
         }else if (richTextRun){

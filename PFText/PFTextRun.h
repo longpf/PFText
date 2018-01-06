@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger,PFTextRunWeight) {
 @property (nonatomic, assign) BOOL isResponseTouch;
 
 /**
- 是否自己绘制自己,默认是NO,如果设置为YES 则需要重写 drawRunWithRect:
+ 是否自己绘制自己,默认是NO,如果设置为YES 则需要重写 drawRunWithRect:context:textView:
  */
 @property (nonatomic, getter=isDrawSelf, assign) BOOL drawSelf;
 
@@ -110,7 +110,7 @@ typedef NS_ENUM(NSInteger,PFTextRunWeight) {
  
  @param rect 绘制自己的区域
  */
-- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context;
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context textView:(UIView *)textView;
 
 
 

@@ -6,11 +6,11 @@ PFText
 [![Support](https://img.shields.io/badge/support-iOS%206%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 
 
-一个轻量级的coretext富文本展示和编辑工具。
+一个轻量级的coretext富文本工具.
 
 特点
 ==============
-可以**自定义**筛选规则而不需要操作coretext代码，2.0.0版本增加异步绘制的功能，对一些流畅度要求比较高的视图有比较好的效果
+可以**自定义**筛选规则而不需要操作coretext代码，2.0.0版本增加异步绘制的功能，对一些流畅度要求比较高的视图有比较好的效果.支持gif功能.
 
 一些属性和方法介绍
 ==============
@@ -53,6 +53,8 @@ firstLineHeadIndent   | 首行缩进
 * 点击事件
 * 粘贴板
 * 异步绘制
+* 本地gif
+* 网络gif
 
 效果
 ==============

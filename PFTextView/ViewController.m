@@ -27,7 +27,7 @@
     
     PFTextView *textView = [[PFTextView alloc]initWithFrame:CGRectMake(0, 100, SCREEN_SIZE.width, 350)];
     
-    textView.text = @"PFText是一个轻量级的coretext富文本展示和编辑工具。一些基本设置可参见#PFTextView.h#,其他已经实现了@nick,#tag#,linkhttps://github.com/LongPF/PFText的识别、点击操作。本地图片`penguin.png`，网络图片``http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg``。自适应高度，粘贴板功能。注：可根据需要复写#PFTextRun#，根据特定的正则和特定的基本设置定制。\n新版本增加了#异步绘制#功能，可用于对流畅度比较高的视图";
+    textView.text = @"PFText是一个轻量级的coretext富文本展示和编辑工具。一些基本设置可参见#PFTextView.h#,其他已经实现了@nick,#tag#,linkhttps://github.com/LongPF/PFText的识别、点击操作。本地图片`penguin.png`，网络图片``http://wsqncdn.miaopai.com/upload-pic/fd83bd2c292dd2fb7e4e635f29720162.jpg``。自适应高度，粘贴板功能。注：可根据需要复写#PFTextRun#，根据特定的正则和特定的基本设置定制。\n新版本增加了#异步绘制#功能，可用于对流畅度比较高的视图\n新增gif的支持功能.包括本地gif`local_gif.gif`,网络gif``http://img4q.duitang.com/uploads/item/201502/28/20150228233429_caQnR.gif``.如果有关gif的需求为不同的索引规则,可参考PFTextLocalImageRun,PFTextInternetImageRun类继承PFTextRunDelegateRun进行配置";
     
     
     textView.lineBreakMode = NSLineBreakByTruncatingTail;
@@ -55,15 +55,16 @@
     tag.textColor = [UIColor colorWithRed:255.0/255 green:124.0/255 blue:78.0/255 alpha:1];
     tag.font = [UIFont boldSystemFontOfSize:14];
     
-    // 本地图片
+    // 本地图片 / gif
     PFTextLocalImageRun *localImageRun = [PFTextLocalImageRun new];
     localImageRun.defaultSize = CGSizeMake(30, 30);
-    localImageRun.offsetY = 10;
+    localImageRun.offsetY = 3;
     
-    // 网络图片
+    // 网络图片 / gif
     PFTextInternetImageRun *internetImageRun = [PFTextInternetImageRun new];
     internetImageRun.defaultSize = CGSizeMake(30, 30);
     internetImageRun.placeholderImage = [UIImage imageNamed:@"default"];
+    internetImageRun.offsetY = 6;
     
     // 配置
     textView.settingRuns = @[atRun,localImageRun,internetImageRun,linkRun,tag];

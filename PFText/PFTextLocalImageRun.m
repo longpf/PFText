@@ -7,6 +7,7 @@
 //
 
 #import "PFTextLocalImageRun.h"
+#import "UIImage+PFGIF.h"
 
 @implementation PFTextLocalImageRun
 
@@ -26,7 +27,7 @@
         }
         
         if (runArray) {
-            UIImage *image = [UIImage imageNamed:imageName];
+            UIImage *image = [UIImage pf_animatedGIFNamed:imageName];
             if (!image) {
                 continue;
             }
@@ -51,12 +52,37 @@
     [super configRun:attributedString];
 }
 
-- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context
+- (void)drawRunWithRect:(CGRect)rect context:(CGContextRef)context textView:(UIView *)textView
 {
     if (_image) {
-//        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextDrawImage(context, rect, _image.CGImage);
-//        UIGraphicsEndImageContext();
+        if (_image._isGIF)
+        {
+            //由于coretext进行过坐标转化,这里添加layer的话rect需要变换下
+            CGRect drawRect = CGRectMake(rect.origin.x, CGRectGetHeight(textView.bounds)-rect.origin.y-rect.size.height, rect.size.width, rect.size.height);
+            CALayer *layer = [[CALayer alloc] init];
+            layer.frame = drawRect;
+            [textView.layer addSublayer:layer];
+            NSMutableArray *source = [NSMutableArray array];
+            for (int i = 0; i < _image.images.count; i++) {
+                UIImage *image = _image.images[i];
+                //用CFBridgingRelease会有内存错误crash
+                [source addObject:CFRetain(image.CGImage)];
+            }
+            CAKeyframeAnimation *gifAni = [CAKeyframeAnimation animationWithKeyPath:@"contents"];
+            [gifAni setValues:source];
+            gifAni.duration = _image.duration;
+            [gifAni setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+            gifAni.repeatCount = MAXFLOAT;
+            [layer addAnimation:gifAni forKey:@"gifAni"];
+            for (int i = 0; i < source.count; i++) {
+                CFTypeRef image = (__bridge CFTypeRef)source[i];
+                CFRelease(image);
+            }
+        }
+        else
+        {
+            CGContextDrawImage(context, rect, _image.CGImage);
+        }
     }
 }
 
